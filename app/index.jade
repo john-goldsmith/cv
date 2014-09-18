@@ -1,0 +1,86 @@
+doctype html
+html.no-js
+  head
+    meta(charset="utf-8")
+    title John Goldsmith | Full-stack Web Developer & Designer | Orange County, CA
+    meta(name="description" content="")
+    meta(name="viewport" content="width=device-width")
+    link(rel="shortcut icon" href="/favicon.ico")
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    link(rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.css")
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/application.css -->
+    link(rel="stylesheet" href="styles/application.css")
+    <!-- endbuild -->
+    <!-- build:js scripts/vendor/modernizr.js -->
+    script(src="bower_components/modernizr/modernizr.js")
+    <!-- endbuild -->
+
+  body
+
+    <!--[if lt IE 7]>
+    p.browsehappy
+      | You are using an
+      strong outdated
+      | browser. Please
+      a(href="http://browsehappy.com") upgrade your browser
+      | to improve your experience.
+    <![endif]-->
+
+    div.container
+      div.header
+        ul.nav.nav-pills.pull-right
+          li.active
+            a(href="#") Home
+          li
+            a(href="#") About
+          li
+            a(href="#") Contact
+        h.text-muted cv
+
+      div.jumbotron
+        h1 'Allo, 'Allo!
+        p.lead Always a pleasure scaffolding your apps.
+        p
+          a.btn.btn-lg.btn-success(href="#")
+            | Splendid!
+            span.glyphicon.glyphicon-ok
+
+      div.row.marketing
+        div.col-lg-6
+
+      ul#badges
+
+      div.footer
+        p
+          span.glyphicon.glyphicon-heart
+          | from the Yeoman team
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    script(src="bower_components/jquery/dist/jquery.js")
+    script(src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/affix.js")
+    script(src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/alert.js")
+    script(src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/button.js")
+    script(src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/carousel.js")
+    script(src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/collapse.js")
+    script(src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/dropdown.js")
+    script(src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tab.js")
+    script(src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition.js")
+    script(src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/scrollspy.js")
+    script(src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/modal.js")
+    script(src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tooltip.js")
+    script(src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/popover.js")
+    script(src="bower_components/underscore/underscore.js")
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    include ./_google_analytics.jade
+
+    <!-- build:js({app,.tmp}) scripts/application.js -->
+    script(src="scripts/application.js")
+    script(src="scripts/badges.js")
+    <!-- endbuild -->

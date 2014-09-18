@@ -8,7 +8,22 @@
 // If you want to recursively match all subfolders, use:
 // 'test/spec/**/*.js'
 
+// Order needed:
+// Compile Jade into HTML (and dump into .tmp)
+// Compile Coffee into JS (and dump into .tmp/scripts)
+// Compile SASS into CSS (and dump into .tmp/styles)
+// Minify HTML
+// Minify and concat CSS
+// Minify and concat JS
+// <vendor libs>
+// Copy HTML from .tmp to dist
+// Copy CSS from .tmp/styles to dist/styles
+// Copy JS from .tmp/scripts to dist/scripts
+
 module.exports = function (grunt) {
+
+  grunt.loadNpmTasks('grunt-contrib-jade');
+  grunt.loadNpmTasks('grunt-wiredep');
 
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
@@ -34,6 +49,13 @@ module.exports = function (grunt) {
         files: ['bower.json'],
         tasks: ['wiredep']
       },
+      coffee: {
+        files: ['<%= config.app %>/scripts/{,*/}*.{coffee,litcoffee,coffee.md}'],
+        tasks: [
+          'newer:coffee:dist',
+          'wiredep'
+        ]
+      },
       js: {
         files: ['<%= config.app %>/scripts/{,*/}*.js'],
         tasks: ['jshint'],
@@ -45,25 +67,79 @@ module.exports = function (grunt) {
         files: ['test/spec/{,*/}*.js'],
         tasks: ['test:watch']
       },
+      // compass: {
+      //   files: ['<%= config.app %>/styles/{,*/}*.{scss,sass}'],
+      //   tasks: [
+      //     'compass:server',
+      //     'autoprefixer',
+      //     'wiredep'
+      //   ]
+      // },
       gruntfile: {
         files: ['Gruntfile.js']
       },
       sass: {
         files: ['<%= config.app %>/styles/{,*/}*.{scss,sass}'],
-        tasks: ['sass:server', 'autoprefixer']
+        tasks: [
+          'sass:server',
+          'autoprefixer'
+        ]
       },
-      styles: {
-        files: ['<%= config.app %>/styles/{,*/}*.css'],
-        tasks: ['newer:copy:styles', 'autoprefixer']
+      // styles: {
+      //   files: ['<%= config.app %>/styles/{,*/}*.css'],
+      //   tasks: [
+      //     'newer:copy:styles',
+      //     'autoprefixer'
+      //   ]
+      // },
+      jade: {
+        // files: ['<%= config.app %>/{,*/}*.jade'],
+        files: ['<%= config.app %>/**/*.jade'],
+        tasks: [
+          'jade',
+          'wiredep'
+        ]
       },
       livereload: {
         options: {
           livereload: '<%= connect.options.livereload %>'
         },
         files: [
-          '<%= config.app %>/{,*/}*.html',
+          // '<%= config.app %>/{,*/}*.html',
+          '.tmp/{,*/}*.html',
           '.tmp/styles/{,*/}*.css',
-          '<%= config.app %>/images/{,*/}*'
+          '.tmp/styles/{,*/}*.js',
+          '<%= config.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+        ]
+      }
+    },
+
+    // Compiles CoffeeScript to JavaScript
+    coffee: {
+      options: {
+        sourceMap: true,
+        sourceRoot: ''
+      },
+      dist: {
+        files: [
+          {
+            expand: true,
+            cwd: '<%= config.app %>/scripts',
+            src: '{,*/}*.coffee',
+            dest: '.tmp/scripts',
+            ext: '.js'
+          }
+        ]
+      },
+      test: {
+        files: [
+          {
+            expand: true,
+            cwd: 'test/spec',
+            src: '{,*/}*.coffee',
+            dest: '.tmp/spec',
+            ext: '.js'
+          }
         ]
       }
     },
@@ -113,14 +189,16 @@ module.exports = function (grunt) {
     // Empties folders to start fresh
     clean: {
       dist: {
-        files: [{
-          dot: true,
-          src: [
-            '.tmp',
-            '<%= config.dist %>/*',
-            '!<%= config.dist %>/.git*'
-          ]
-        }]
+        files: [
+          {
+            dot: true,
+            src: [
+              '.tmp',
+              '<%= config.dist %>/*',
+              '!<%= config.dist %>/.git*'
+            ]
+          }
+        ]
       },
       server: '.tmp'
     },
@@ -156,22 +234,26 @@ module.exports = function (grunt) {
         loadPath: 'bower_components'
       },
       dist: {
-        files: [{
-          expand: true,
-          cwd: '<%= config.app %>/styles',
-          src: ['*.{scss,sass}'],
-          dest: '.tmp/styles',
-          ext: '.css'
-        }]
+        files: [
+          {
+            expand: true,
+            cwd: '<%= config.app %>/styles',
+            src: ['*.{scss,sass}'],
+            dest: '.tmp/styles',
+            ext: '.css'
+          }
+        ]
       },
       server: {
-        files: [{
-          expand: true,
-          cwd: '<%= config.app %>/styles',
-          src: ['*.{scss,sass}'],
-          dest: '.tmp/styles',
-          ext: '.css'
-        }]
+        files: [
+          {
+            expand: true,
+            cwd: '<%= config.app %>/styles',
+            src: ['*.{scss,sass}'],
+            dest: '.tmp/styles',
+            ext: '.css'
+          }
+        ]
       }
     },
 
@@ -181,12 +263,14 @@ module.exports = function (grunt) {
         browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1']
       },
       dist: {
-        files: [{
-          expand: true,
-          cwd: '.tmp/styles/',
-          src: '{,*/}*.css',
-          dest: '.tmp/styles/'
-        }]
+        files: [
+          {
+            expand: true,
+            cwd: '.tmp/styles/',
+            src: '{,*/}*.css',
+            dest: '.tmp/styles/'
+          }
+        ]
       }
     },
 
@@ -225,13 +309,16 @@ module.exports = function (grunt) {
       options: {
         dest: '<%= config.dist %>'
       },
-      html: '<%= config.app %>/index.html'
+      html: '.tmp/index.html'
     },
 
     // Performs rewrites based on rev and the useminPrepare configuration
     usemin: {
       options: {
-        assetsDirs: ['<%= config.dist %>', '<%= config.dist %>/images']
+        assetsDirs: [
+          '<%= config.dist %>',
+          '<%= config.dist %>/images'
+        ]
       },
       html: ['<%= config.dist %>/{,*/}*.html'],
       css: ['<%= config.dist %>/styles/{,*/}*.css']
@@ -240,23 +327,27 @@ module.exports = function (grunt) {
     // The following *-min tasks produce minified files in the dist folder
     imagemin: {
       dist: {
-        files: [{
-          expand: true,
-          cwd: '<%= config.app %>/images',
-          src: '{,*/}*.{gif,jpeg,jpg,png}',
-          dest: '<%= config.dist %>/images'
-        }]
+        files: [
+          {
+            expand: true,
+            cwd: '<%= config.app %>/images',
+            src: '{,*/}*.{gif,jpeg,jpg,png}',
+            dest: '<%= config.dist %>/images'
+          }
+        ]
       }
     },
 
     svgmin: {
       dist: {
-        files: [{
-          expand: true,
-          cwd: '<%= config.app %>/images',
-          src: '{,*/}*.svg',
-          dest: '<%= config.dist %>/images'
-        }]
+        files: [
+          {
+            expand: true,
+            cwd: '<%= config.app %>/images',
+            src: '{,*/}*.svg',
+            dest: '<%= config.dist %>/images'
+          }
+        ]
       }
     },
 
@@ -273,12 +364,14 @@ module.exports = function (grunt) {
           removeRedundantAttributes: true,
           useShortDoctype: true
         },
-        files: [{
-          expand: true,
-          cwd: '<%= config.dist %>',
-          src: '{,*/}*.html',
-          dest: '<%= config.dist %>'
-        }]
+        files: [
+          {
+            expand: true,
+            cwd: '<%= config.dist %>',
+            src: '{,*/}*.html',
+            dest: '<%= config.dist %>'
+          }
+        ]
       }
     },
 
@@ -311,34 +404,53 @@ module.exports = function (grunt) {
     // Copies remaining files to places other tasks can use
     copy: {
       dist: {
-        files: [{
-          expand: true,
-          dot: true,
-          cwd: '<%= config.app %>',
-          dest: '<%= config.dist %>',
-          src: [
-            '*.{ico,png,txt}',
-            'images/{,*/}*.webp',
-            '{,*/}*.html',
-            'styles/fonts/{,*/}*.*'
-          ]
-        }, {
-          src: 'node_modules/apache-server-configs/dist/.htaccess',
-          dest: '<%= config.dist %>/.htaccess'
-        }, {
-          expand: true,
-          dot: true,
-          cwd: '.',
-          src: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*',
-          dest: '<%= config.dist %>'
-        }]
+        files: [
+          {
+            expand: true,
+            dot: true,
+            cwd: '<%= config.app %>',
+            dest: '<%= config.dist %>',
+            src: [
+              '*.{ico,png,txt}',
+              'images/{,*/}*.webp',
+              // '{,*/}*.html',
+              'styles/fonts/{,*/}*.*'
+            ]
+          },
+          {
+            cwd: '.tmp',
+            expand: true,
+            src: '*.html',
+            dest: '<%= config.dist %>'
+          },
+          {
+            src: 'node_modules/apache-server-configs/dist/.htaccess',
+            dest: '<%= config.dist %>/.htaccess'
+          },
+          {
+            expand: true,
+            dot: true,
+            cwd: '.',
+            src: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*',
+            dest: '<%= config.dist %>'
+          }
+        ]
       },
       styles: {
         expand: true,
         dot: true,
-        cwd: '<%= config.app %>/styles',
-        dest: '.tmp/styles/',
+        // cwd: '<%= config.app %>/styles',
+        cwd: '.tmp/styles',
+        dest: '<%= config.dist %>/styles/',
         src: '{,*/}*.css'
+      },
+      scripts: {
+        expand: true,
+        dot: true,
+        // cwd: '<%= config.app %>/scripts',
+        cwd: '.tmp/scripts',
+        dest: '<%= config.dist %>/scripts',
+        src: '{,*/}*.{js, js.map}'
       }
     },
 
@@ -363,18 +475,42 @@ module.exports = function (grunt) {
     concurrent: {
       server: [
         'sass:server',
-        'copy:styles'
+        // 'compass:server',
+        'copy:styles',
+        'copy:scripts',
+        'coffee:dist'
       ],
       test: [
-        'copy:styles'
+        'copy:styles',
+        'copy:scripts'
       ],
       dist: [
         'sass',
+        'coffee:dist',
         'copy:styles',
+        'copy:scripts',
         'imagemin',
         'svgmin'
       ]
+    },
+
+    jade: {
+      dist: {
+        options: {
+          pretty: true
+        },
+        files: [
+          {
+            expand: true,
+            cwd: '<%= config.app %>',
+            dest: '.tmp',
+            src: '**/*.jade',
+            ext: '.html'
+          }
+        ]
+      }
     }
+
   });
 
 
@@ -388,6 +524,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
+      'jade',
       'wiredep',
       'concurrent:server',
       'autoprefixer',
@@ -418,6 +555,8 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'jade',
+    'coffee:dist',
     'wiredep',
     'useminPrepare',
     'concurrent:dist',
@@ -427,7 +566,7 @@ module.exports = function (grunt) {
     'uglify',
     'copy:dist',
     'modernizr',
-    'rev',
+    // 'rev',
     'usemin',
     'htmlmin'
   ]);
@@ -437,4 +576,5 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
 };
