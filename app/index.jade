@@ -31,33 +31,8 @@ html.no-js
     <![endif]-->
 
     div.container
-      div.header
-        ul.nav.nav-pills.pull-right
-          li.active
-            a(href="#") Home
-          li
-            a(href="#") About
-          li
-            a(href="#") Contact
-        h.text-muted cv
 
-      div.jumbotron
-        h1 'Allo, 'Allo!
-        p.lead Always a pleasure scaffolding your apps.
-        p
-          a.btn.btn-lg.btn-success(href="#")
-            | Splendid!
-            span.glyphicon.glyphicon-ok
-
-      div.row.marketing
-        div.col-lg-6
-
-      ul#badges
-
-      div.footer
-        p
-          span.glyphicon.glyphicon-heart
-          | from the Yeoman team
+      include ./badges.jade
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -78,7 +53,7 @@ html.no-js
     <!-- endbower -->
     <!-- endbuild -->
 
-    include ./_google_analytics.jade
+    //- include ./_google_analytics.jade
 
     <!-- build:js({app,.tmp}) scripts/application.js -->
     script(src="scripts/application.js")
