@@ -21,7 +21,7 @@ html.no-js
 
   body
 
-    <!--[if lt IE 7]>
+    <!--[if lt IE 10]>
     p.browsehappy
       | You are using an
       strong outdated
@@ -32,7 +32,8 @@ html.no-js
 
     div.container
 
-      include ./badges.jade
+      include ./_header
+      include ./_skills.jade
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
