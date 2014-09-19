@@ -22,7 +22,7 @@
   # style="height: <%= proficiency %>%;"
   SKILLS = [
     {
-      name: "ruby"
+      name: "Ruby"
       order: 1
       borderColor: "#c11000"
       textColor: "#fff"
@@ -36,11 +36,11 @@
       ]
     }
     {
-      name: "rails"
+      name: "Rails"
       order: 3
       borderColor: "#a02c2e"
       textColor: "#fff"
-      icon: "ruby.png" #rails.png
+      icon: "rails.png"
       proficiency: 85
       tags: [
         "programming"
@@ -50,50 +50,25 @@
       ]
     }
     {
-      name: "html"
+      name: "PHP"
       order: 5
-      borderColor: "orange"
+      borderColor: "#5967a8"
       textColor: "#fff"
-      icon: "ruby.png" #html.png
+      icon: "php.png"
       proficiency: 100
       tags: [
         "programming"
         "languages"
-        "frontend"
+        "backend"
+        "php"
       ]
     }
     {
-      name: "css"
+      name: "MySQL"
       order: 6
-      borderColor: "yellow"
+      borderColor: "#007d7e"
       textColor: "#fff"
-      icon: "ruby.png" #css.png
-      proficiency: 100
-      tags: [
-        "programming"
-        "languages"
-        "frontend"
-      ]
-    }
-    {
-      name: "javascript"
-      order: 4
-      borderColor: "blue"
-      textColor: "#fff"
-      icon: "ruby.png" #javascript.png
-      proficiency: 100
-      tags: [
-        "programming"
-        "languages"
-        "frontend"
-      ]
-    }
-    {
-      name: "php"
-      order: 2
-      borderColor: "purple"
-      textColor: "#fff"
-      icon: "ruby.png" #php.png
+      icon: "mysql.png"
       proficiency: 100
       tags: [
         "programming"
@@ -101,22 +76,348 @@
         "backend"
       ]
     }
+    {
+      name: "HTML5"
+      order: 4
+      borderColor: "#e64c17"
+      textColor: "#fff"
+      icon: "html5.png"
+      proficiency: 100
+      tags: [
+        "programming"
+        "languages"
+        "frontend"
+      ]
+    }
+    {
+      name: "CSS3"
+      order: 2
+      borderColor: "#006ebd"
+      textColor: "#fff"
+      icon: "css3.png" #php.png
+      proficiency: 100
+      tags: [
+        "programming"
+        "languages"
+        "frontend"
+      ]
+    }
+    {
+      name: "Bower"
+      order: 2
+      borderColor: "#553728"
+      textColor: "#fff"
+      icon: "bower.png"
+      proficiency: 100
+      tags: [
+        "package_manager"
+        "javascript"
+      ]
+    }
+    {
+      name: "Grunt"
+      order: 2
+      borderColor: "#2f0c00"
+      textColor: "#fff"
+      icon: "grunt.png"
+      proficiency: 100
+      tags: [
+        "automation"
+        "javascript"
+      ]
+    }
+    {
+      name: "CodeIgniter"
+      order: 2
+      borderColor: "#ff4400"
+      textColor: "#fff"
+      icon: "codeigniter.png"
+      proficiency: 100
+      tags: [
+        "programming"
+        "frameworks"
+        "backend"
+        "frontend"
+        "php"
+      ]
+    }
+    {
+      name: "jQuery"
+      order: 2
+      borderColor: "#000004"
+      textColor: "#fff"
+      icon: "jquery.png"
+      proficiency: 100
+      tags: [
+        "programming"
+        "frameworks"
+        "frontend"
+        "javascript"
+      ]
+    }
+    {
+      name: "Photoshop"
+      order: 2
+      borderColor: "#2b2841"
+      textColor: "#fff"
+      icon: "photoshop.png"
+      proficiency: 100
+      tags: [
+        "design"
+      ]
+    }
+    {
+      name: "Illustrator"
+      order: 2
+      borderColor: "#6b5945"
+      textColor: "#fff"
+      icon: "illustrator.png"
+      proficiency: 100
+      tags: [
+        "design"
+      ]
+    }
+    {
+      name: "Angular"
+      order: 2
+      borderColor: "#c8464b"
+      textColor: "#fff"
+      icon: "angular.png"
+      proficiency: 100
+      tags: [
+        "programming"
+        "frameworks"
+        "frontend"
+        "javascript"
+      ]
+    }
+    {
+      name: "Git"
+      order: 2
+      borderColor: "#000000"
+      textColor: "#fff"
+      icon: "git.png"
+      proficiency: 100
+      tags: [
+        "version_control"
+        "programming"
+      ]
+    }
+    {
+      name: "NodeJS"
+      order: 2
+      borderColor: "#2b2841"
+      textColor: "#fff"
+      icon: "nodejs.png"
+      proficiency: 100
+      tags: [
+        "programming"
+        "frameworks"
+        "backend"
+        "javascript"
+      ]
+    }
+    {
+      name: "Drupal"
+      order: 2
+      borderColor: "#005890"
+      textColor: "#fff"
+      icon: "drupal.png"
+      proficiency: 100
+      tags: [
+        "programming"
+        "frameworks"
+        "frontend"
+        "backend"
+        "php"
+      ]
+    }
+    {
+      name: "Sinatra"
+      order: 2
+      borderColor: "#c4bca7"
+      textColor: "#fff"
+      icon: "sinatra.png"
+      proficiency: 100
+      tags: [
+        "programming"
+        "backend"
+        "ruby"
+      ]
+    }
+    {
+      name: "WordPress"
+      order: 2
+      borderColor: "#464646"
+      textColor: "#fff"
+      icon: "wordpress.png"
+      proficiency: 100
+      tags: [
+        "programming"
+        "frameworks"
+        "frontend"
+        "backend"
+        "php"
+      ]
+    }
+    {
+      name: "Zend Framework"
+      order: 2
+      borderColor: "#65b800"
+      textColor: "#fff"
+      icon: "zendframework.png"
+      proficiency: 100
+      tags: [
+        "programming"
+        "frameworks"
+        "frontend"
+        "backend"
+        "php"
+      ]
+    }
+    {
+      name: "3ds Max"
+      order: 2
+      borderColor: "#0a4f50"
+      textColor: "#fff"
+      icon: "3dsmax.png"
+      proficiency: 100
+      tags: [
+        "hobby"
+        "design"
+      ]
+    }
+    {
+      name: "Maya"
+      order: 2
+      borderColor: "#0c4b4b"
+      textColor: "#fff"
+      icon: "maya.png"
+      proficiency: 100
+      tags: [
+        "hobby"
+        "design"
+      ]
+    }
+    {
+      name: "Guitar"
+      order: 2
+      borderColor: "#b15301"
+      textColor: "#fff"
+      icon: "guitar.png"
+      proficiency: 100
+      tags: [
+        "hobby"
+      ]
+    }
+    {
+      name: "CoffeeScript"
+      order: 2
+      borderColor: "#28334c"
+      textColor: "#fff"
+      icon: "coffeescript.png"
+      proficiency: 100
+      tags: [
+        "programming"
+        "languages"
+        "frontend"
+        "javascript"
+      ]
+    }
+    {
+      name: "Joomla"
+      order: 2
+      borderColor: "#5fa920"
+      textColor: "#fff"
+      icon: "joomla.png"
+      proficiency: 100
+      tags: [
+        "programming"
+        "frameworks"
+        "php"
+      ]
+    }
+    {
+      name: "Jekyll"
+      order: 2
+      borderColor: "#b80000"
+      textColor: "#fff"
+      icon: "jekyll.png"
+      proficiency: 100
+      tags: [
+        "frameworks"
+      ]
+    }
+    {
+      name: "Bootstrap"
+      order: 2
+      borderColor: "#31153e"
+      textColor: "#fff"
+      icon: "bootstrap.png"
+      proficiency: 100
+      tags: [
+        "programming"
+        "frameworks"
+        "frontend"
+      ]
+    }
+    {
+      name: "Mac"
+      order: 2
+      borderColor: "#1d77f6"
+      textColor: "#fff"
+      icon: "mac.png"
+      proficiency: 100
+      tags: [
+        "os"
+      ]
+    }
+    {
+      name: "Windows"
+      order: 2
+      borderColor: "#0eb9f5"
+      textColor: "#fff"
+      icon: "windows.png"
+      proficiency: 100
+      tags: [
+        "os"
+      ]
+    }
+    {
+      name: "Linux"
+      order: 2
+      borderColor: "#000000"
+      textColor: "#fff"
+      icon: "linux.png"
+      proficiency: 100
+      tags: [
+        "os"
+      ]
+    }
   ]
 
   constructor: ->
-    @generateSkills()
+    @generateSkills(_.sortBy(SKILLS, "order"))
     $(document).on "touchstart", ".skill-container", @bindTouchStartEvent
+    $(document).on "click", ".skill-tag", @filterSkills
     # $(document).on "touchstart mouseover", ".skill-container", @applyProficiencyHeight
     # $(document).on "touchend mouseout", ".skill-container", @removeProficiencyHeight
 
-  generateSkills: =>
-    orderedSkills = _.sortBy(SKILLS, "order")
-    _.each orderedSkills, (element, index) ->
-      SKILLS_CONTAINER.append SKILL_TEMPLATE(orderedSkills[index])
+  generateSkills: (skills) =>
+    SKILLS_CONTAINER.empty()
+    _.each skills, (element, index) ->
+      SKILLS_CONTAINER.append SKILL_TEMPLATE(skills[index])
 
   bindTouchStartEvent: ->
     $(".skill-container").removeClass("hover")
     $(@).toggleClass("hover")
+
+  filterSkills: ->
+    console.log $(@), $(@)[0].hash
+    # filter = $(@)[0].hash.substring(1)
+    # filteredSkills = SKILLS.where "tags" include filter
+    # @generateSkills(filteredSkills)
+    # @generateSkills(SKILLS)
 
   # applyProficiencyHeight: ->
   #   $(@).find('.skill-proficiency').css "max-height": "100%"
