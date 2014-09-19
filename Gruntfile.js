@@ -109,7 +109,7 @@ module.exports = function (grunt) {
           '.tmp/{,*/}*.html',
           '.tmp/styles/{,*/}*.css',
           '.tmp/styles/{,*/}*.js',
-          '<%= config.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+          '<%= config.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg,ico}'
         ]
       }
     },
@@ -296,7 +296,7 @@ module.exports = function (grunt) {
             '<%= config.dist %>/styles/{,*/}*.css',
             '<%= config.dist %>/images/{,*/}*.*',
             '<%= config.dist %>/styles/fonts/{,*/}*.*',
-            '<%= config.dist %>/*.{ico,png}'
+            '<%= config.dist %>/*.{ico,png,jpg,.jpeg,gif}'
           ]
         }
       }
@@ -414,7 +414,7 @@ module.exports = function (grunt) {
               '*.{ico,png,txt}',
               'images/{,*/}*.webp',
               // '{,*/}*.html',
-              'styles/fonts/{,*/}*.*'
+              'fonts/{,*/}*.{eot,svg,ttf,woff,woff2,otf}'
             ]
           },
           {
@@ -451,6 +451,14 @@ module.exports = function (grunt) {
         cwd: '.tmp/scripts',
         dest: '<%= config.dist %>/scripts',
         src: '{,*/}*.{js, js.map}'
+      },
+      fonts: {
+        expand: true,
+        dot: true,
+        // cwd: '<%= config.app %>/styles',
+        cwd: '<%= config.app %>/fonts',
+        dest: '.tmp/fonts/',
+        src: '{,*/}*.{eot,svg,ttf,woff,woff2,otf}'
       }
     },
 
@@ -526,6 +534,7 @@ module.exports = function (grunt) {
       'clean:server',
       'jade',
       'wiredep',
+      'copy:fonts',
       'concurrent:server',
       'autoprefixer',
       'connect:livereload',

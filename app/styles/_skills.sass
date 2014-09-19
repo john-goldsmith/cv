@@ -21,6 +21,11 @@
       .skill
         transform: rotateY(180deg)
 
+        // .skill-back
+
+        //   .skill-proficiency
+        //     height: 100%
+
     .skill
       transition: 0.4s
       transform-style: preserve-3d
@@ -40,14 +45,24 @@
 
       .skill-front
         z-index: 2
-        transform: rotateY(0deg) /* for firefox 31 */
+        transform: rotateY(0deg) /* Firefox 31 */
 
         img
           margin: 0 auto
 
       .skill-back
         transform: rotateY(180deg)
-        padding-top: 40px
-        text-transform: uppercase
+        // padding-top: 40px
+        text-transform: capitalize
         letter-spacing: 1px
         text-shadow: 1px 1px rgba(0, 0, 0, 0.3)
+        overflow: hidden
+
+        .skill-name
+          position: relative
+          top: 30px
+
+        // .skill-proficiency
+        //   background-color: rgba(0, 0, 0, 0.2)
+        //   max-height: 0%
+        //   transition: height 1s

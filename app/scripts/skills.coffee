@@ -11,11 +11,15 @@
             <img src="images/skills/<%= icon %>" alt="<%= name %>" />
           </div>
           <div class="skill-back" style="color: <%= textColor %>; background-color: <%= borderColor %>;">
-            <%= name %>
+            <div class="skill-name">
+              <%= name %>
+            </div>
+            <div class="skill-proficiency"></div>
           </div>
         </div>
       </div>
     </div>')
+  # style="height: <%= proficiency %>%;"
   SKILLS = [
     {
       name: "ruby"
@@ -102,6 +106,8 @@
   constructor: ->
     @generateSkills()
     $(document).on "touchstart", ".skill-container", @bindTouchStartEvent
+    # $(document).on "touchstart mouseover", ".skill-container", @applyProficiencyHeight
+    # $(document).on "touchend mouseout", ".skill-container", @removeProficiencyHeight
 
   generateSkills: =>
     orderedSkills = _.sortBy(SKILLS, "order")
@@ -111,6 +117,12 @@
   bindTouchStartEvent: ->
     $(".skill-container").removeClass("hover")
     $(@).toggleClass("hover")
+
+  # applyProficiencyHeight: ->
+  #   $(@).find('.skill-proficiency').css "max-height": "100%"
+
+  # removeProficiencyHeight: ->
+  #   $(@).find('.skill-proficiency').css "max-height": "0%"
 
 $(document).ready =>
   @app ?= {}
