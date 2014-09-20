@@ -21,7 +21,7 @@
         tags: ["development", "languages", "ruby", "backend"]
       }, {
         name: "Rails",
-        order: 3,
+        order: 2,
         borderColor: "#a02c2e",
         textColor: "#fff",
         icon: "rails.png",
@@ -30,7 +30,7 @@
         tags: ["development", "frameworks", "ruby", "backend"]
       }, {
         name: "PHP",
-        order: 5,
+        order: 3,
         borderColor: "#5967a8",
         textColor: "#fff",
         icon: "php.png",
@@ -39,7 +39,7 @@
         tags: ["development", "languages", "backend", "php"]
       }, {
         name: "MySQL",
-        order: 6,
+        order: 4,
         borderColor: "#007d7e",
         textColor: "#fff",
         icon: "mysql.png",
@@ -48,7 +48,7 @@
         tags: ["development", "languages", "backend"]
       }, {
         name: "HTML5",
-        order: 4,
+        order: 5,
         borderColor: "#e64c17",
         textColor: "#fff",
         icon: "html5.png",
@@ -57,7 +57,7 @@
         tags: ["development", "languages", "frontend"]
       }, {
         name: "CSS3",
-        order: 2,
+        order: 6,
         borderColor: "#006ebd",
         textColor: "#fff",
         icon: "css3.png",
@@ -66,7 +66,7 @@
         tags: ["development", "languages", "frontend"]
       }, {
         name: "Bower",
-        order: 2,
+        order: 7,
         borderColor: "#553728",
         textColor: "#fff",
         icon: "bower.png",
@@ -75,7 +75,7 @@
         tags: ["package_manager", "javascript"]
       }, {
         name: "Grunt",
-        order: 2,
+        order: 8,
         borderColor: "#2f0c00",
         textColor: "#fff",
         icon: "grunt.png",
@@ -84,7 +84,7 @@
         tags: ["automation", "javascript"]
       }, {
         name: "CodeIgniter",
-        order: 2,
+        order: 9,
         borderColor: "#ff4400",
         textColor: "#fff",
         icon: "codeigniter.png",
@@ -93,7 +93,7 @@
         tags: ["development", "frameworks", "backend", "frontend", "php"]
       }, {
         name: "jQuery",
-        order: 2,
+        order: 10,
         borderColor: "#000004",
         textColor: "#fff",
         icon: "jquery.png",
@@ -102,7 +102,7 @@
         tags: ["development", "frameworks", "frontend", "javascript"]
       }, {
         name: "Photoshop",
-        order: 2,
+        order: 11,
         borderColor: "#2b2841",
         textColor: "#fff",
         icon: "photoshop.png",
@@ -111,7 +111,7 @@
         tags: ["design"]
       }, {
         name: "Illustrator",
-        order: 2,
+        order: 12,
         borderColor: "#6b5945",
         textColor: "#fff",
         icon: "illustrator.png",
@@ -120,7 +120,7 @@
         tags: ["design"]
       }, {
         name: "Angular",
-        order: 2,
+        order: 13,
         borderColor: "#c8464b",
         textColor: "#fff",
         icon: "angular.png",
@@ -129,7 +129,7 @@
         tags: ["development", "frameworks", "frontend", "javascript"]
       }, {
         name: "Git",
-        order: 2,
+        order: 14,
         borderColor: "#000000",
         textColor: "#fff",
         icon: "git.png",
@@ -138,7 +138,7 @@
         tags: ["version_control", "development"]
       }, {
         name: "NodeJS",
-        order: 2,
+        order: 15,
         borderColor: "#3b3d33",
         textColor: "#fff",
         icon: "nodejs.png",
@@ -147,7 +147,7 @@
         tags: ["development", "frameworks", "backend", "javascript"]
       }, {
         name: "Drupal",
-        order: 2,
+        order: 16,
         borderColor: "#005890",
         textColor: "#fff",
         icon: "drupal.png",
@@ -156,7 +156,7 @@
         tags: ["development", "frameworks", "frontend", "backend", "php"]
       }, {
         name: "Sinatra",
-        order: 2,
+        order: 17,
         borderColor: "#c4bca7",
         textColor: "#000",
         icon: "sinatra.png",
@@ -165,7 +165,7 @@
         tags: ["development", "backend", "ruby"]
       }, {
         name: "WordPress",
-        order: 2,
+        order: 18,
         borderColor: "#464646",
         textColor: "#fff",
         icon: "wordpress.png",
@@ -174,7 +174,7 @@
         tags: ["development", "frameworks", "frontend", "backend", "php"]
       }, {
         name: "Zend Framework",
-        order: 2,
+        order: 19,
         borderColor: "#65b800",
         textColor: "#fff",
         icon: "zendframework.png",
@@ -183,7 +183,7 @@
         tags: ["development", "frameworks", "frontend", "backend", "php"]
       }, {
         name: "3ds Max",
-        order: 2,
+        order: 20,
         borderColor: "#0a4f50",
         textColor: "#fff",
         icon: "3dsmax.png",
@@ -192,7 +192,7 @@
         tags: ["hobbies", "design"]
       }, {
         name: "Maya",
-        order: 2,
+        order: 21,
         borderColor: "#0c4b4b",
         textColor: "#fff",
         icon: "maya.png",
@@ -201,7 +201,7 @@
         tags: ["hobbies", "design"]
       }, {
         name: "Guitar",
-        order: 2,
+        order: 22,
         borderColor: "#b15301",
         textColor: "#fff",
         icon: "guitar.png",
@@ -210,7 +210,7 @@
         tags: ["hobbies"]
       }, {
         name: "CoffeeScript",
-        order: 2,
+        order: 23,
         borderColor: "#28334c",
         textColor: "#fff",
         icon: "coffeescript.png",
@@ -219,7 +219,7 @@
         tags: ["development", "languages", "frontend", "javascript"]
       }, {
         name: "Joomla",
-        order: 2,
+        order: 24,
         borderColor: "#5fa920",
         textColor: "#fff",
         icon: "joomla.png",
@@ -228,7 +228,7 @@
         tags: ["development", "frameworks", "php"]
       }, {
         name: "Jekyll",
-        order: 2,
+        order: 25,
         borderColor: "#b80000",
         textColor: "#fff",
         icon: "jekyll.png",
@@ -246,7 +246,7 @@
         tags: ["development", "frameworks", "frontend"]
       }, {
         name: "Mac",
-        order: 2,
+        order: 26,
         borderColor: "#1d77f6",
         textColor: "#fff",
         icon: "mac.png",
@@ -264,7 +264,7 @@
         tags: ["os"]
       }, {
         name: "Linux",
-        order: 2,
+        order: 27,
         borderColor: "#000000",
         textColor: "#fff",
         icon: "linux.png",
@@ -273,7 +273,7 @@
         tags: ["os"]
       }, {
         name: "Raspberry Pi",
-        order: 2,
+        order: 28,
         borderColor: "#be0940",
         textColor: "#fff",
         icon: "raspberrypi.png",
@@ -314,9 +314,7 @@
       if (event) {
         event.preventDefault();
       }
-      if (event) {
-        filter = $(event.target)[0].hash.substring(1);
-      }
+      filter = event ? $(event.target)[0].hash.substring(1) : false;
       filteredSkills = [];
       _.each(SKILLS, function(skill, index) {
         if (!_.contains(skill.tags, filter) && filter) {

@@ -38,7 +38,7 @@ class Skill
     }
     {
       name: "Rails"
-      order: 3
+      order: 2
       borderColor: "#a02c2e"
       textColor: "#fff"
       icon: "rails.png"
@@ -53,7 +53,7 @@ class Skill
     }
     {
       name: "PHP"
-      order: 5
+      order: 3
       borderColor: "#5967a8"
       textColor: "#fff"
       icon: "php.png"
@@ -68,7 +68,7 @@ class Skill
     }
     {
       name: "MySQL"
-      order: 6
+      order: 4
       borderColor: "#007d7e"
       textColor: "#fff"
       icon: "mysql.png"
@@ -82,7 +82,7 @@ class Skill
     }
     {
       name: "HTML5"
-      order: 4
+      order: 5
       borderColor: "#e64c17"
       textColor: "#fff"
       icon: "html5.png"
@@ -96,7 +96,7 @@ class Skill
     }
     {
       name: "CSS3"
-      order: 2
+      order: 6
       borderColor: "#006ebd"
       textColor: "#fff"
       icon: "css3.png" #php.png
@@ -110,7 +110,7 @@ class Skill
     }
     {
       name: "Bower"
-      order: 2
+      order: 7
       borderColor: "#553728"
       textColor: "#fff"
       icon: "bower.png"
@@ -123,7 +123,7 @@ class Skill
     }
     {
       name: "Grunt"
-      order: 2
+      order: 8
       borderColor: "#2f0c00"
       textColor: "#fff"
       icon: "grunt.png"
@@ -136,7 +136,7 @@ class Skill
     }
     {
       name: "CodeIgniter"
-      order: 2
+      order: 9
       borderColor: "#ff4400"
       textColor: "#fff"
       icon: "codeigniter.png"
@@ -152,7 +152,7 @@ class Skill
     }
     {
       name: "jQuery"
-      order: 2
+      order: 10
       borderColor: "#000004"
       textColor: "#fff"
       icon: "jquery.png"
@@ -167,7 +167,7 @@ class Skill
     }
     {
       name: "Photoshop"
-      order: 2
+      order: 11
       borderColor: "#2b2841"
       textColor: "#fff"
       icon: "photoshop.png"
@@ -179,7 +179,7 @@ class Skill
     }
     {
       name: "Illustrator"
-      order: 2
+      order: 12
       borderColor: "#6b5945"
       textColor: "#fff"
       icon: "illustrator.png"
@@ -191,7 +191,7 @@ class Skill
     }
     {
       name: "Angular"
-      order: 2
+      order: 13
       borderColor: "#c8464b"
       textColor: "#fff"
       icon: "angular.png"
@@ -206,7 +206,7 @@ class Skill
     }
     {
       name: "Git"
-      order: 2
+      order: 14
       borderColor: "#000000"
       textColor: "#fff"
       icon: "git.png"
@@ -219,7 +219,7 @@ class Skill
     }
     {
       name: "NodeJS"
-      order: 2
+      order: 15
       borderColor: "#3b3d33"
       textColor: "#fff"
       icon: "nodejs.png"
@@ -234,7 +234,7 @@ class Skill
     }
     {
       name: "Drupal"
-      order: 2
+      order: 16
       borderColor: "#005890"
       textColor: "#fff"
       icon: "drupal.png"
@@ -250,7 +250,7 @@ class Skill
     }
     {
       name: "Sinatra"
-      order: 2
+      order: 17
       borderColor: "#c4bca7"
       textColor: "#000"
       icon: "sinatra.png"
@@ -264,7 +264,7 @@ class Skill
     }
     {
       name: "WordPress"
-      order: 2
+      order: 18
       borderColor: "#464646"
       textColor: "#fff"
       icon: "wordpress.png"
@@ -280,7 +280,7 @@ class Skill
     }
     {
       name: "Zend Framework"
-      order: 2
+      order: 19
       borderColor: "#65b800"
       textColor: "#fff"
       icon: "zendframework.png"
@@ -296,7 +296,7 @@ class Skill
     }
     {
       name: "3ds Max"
-      order: 2
+      order: 20
       borderColor: "#0a4f50"
       textColor: "#fff"
       icon: "3dsmax.png"
@@ -309,7 +309,7 @@ class Skill
     }
     {
       name: "Maya"
-      order: 2
+      order: 21
       borderColor: "#0c4b4b"
       textColor: "#fff"
       icon: "maya.png"
@@ -322,7 +322,7 @@ class Skill
     }
     {
       name: "Guitar"
-      order: 2
+      order: 22
       borderColor: "#b15301"
       textColor: "#fff"
       icon: "guitar.png"
@@ -334,7 +334,7 @@ class Skill
     }
     {
       name: "CoffeeScript"
-      order: 2
+      order: 23
       borderColor: "#28334c"
       textColor: "#fff"
       icon: "coffeescript.png"
@@ -349,7 +349,7 @@ class Skill
     }
     {
       name: "Joomla"
-      order: 2
+      order: 24
       borderColor: "#5fa920"
       textColor: "#fff"
       icon: "joomla.png"
@@ -363,7 +363,7 @@ class Skill
     }
     {
       name: "Jekyll"
-      order: 2
+      order: 25
       borderColor: "#b80000"
       textColor: "#fff"
       icon: "jekyll.png"
@@ -389,7 +389,7 @@ class Skill
     }
     {
       name: "Mac"
-      order: 2
+      order: 26
       borderColor: "#1d77f6"
       textColor: "#fff"
       icon: "mac.png"
@@ -413,7 +413,7 @@ class Skill
     }
     {
       name: "Linux"
-      order: 2
+      order: 27
       borderColor: "#000000"
       textColor: "#fff"
       icon: "linux.png"
@@ -425,7 +425,7 @@ class Skill
     }
     {
       name: "Raspberry Pi"
-      order: 2
+      order: 28
       borderColor: "#be0940"
       textColor: "#fff"
       icon: "raspberrypi.png"
@@ -459,10 +459,15 @@ class Skill
 
   filterSkills: (event) =>
     event.preventDefault() if event # There's no event object on initial page load
-    filter = $(event.target)[0].hash.substring(1) if event
+    filter = if event then $(event.target)[0].hash.substring(1) else false
     filteredSkills = []
     _.each SKILLS, (skill, index) ->
-      if !_.contains(skill.tags, filter) and filter then skill.cssClass = "filtered" else skill.cssClass = "" # Dynamic property -- this feels hacky
+      if !_.contains(skill.tags, filter) and filter
+        skill.cssClass = "filtered"  # Dynamic properties -- this feels hacky
+        # skill.order = skill['order'] # Reset to the original order
+      else
+        skill.cssClass = ""
+        # skill.order = 0 if filter # Force it to the top
       filteredSkills.push(skill)
     @generateSkills(filteredSkills)
     @setFilterLabel $(event.target).text() if event # filteredSkills.length
