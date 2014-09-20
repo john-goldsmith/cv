@@ -376,6 +376,13 @@ module.exports = (grunt) ->
           {
             expand: true
             dot: true
+            cwd: "<%= config.app %>/fonts/cronos/"
+            src: "*.{eot,svg,ttf,woff,woff2,otf}"
+            dest: "<%= config.dist %>/fonts"
+          }
+          {
+            expand: true
+            dot: true
             cwd: "./bower_components/fontawesome/css/"
             src: "font-awesome.min.css"
             dest: ".tmp/styles/"
