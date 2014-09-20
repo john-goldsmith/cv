@@ -5,7 +5,7 @@
   # Having view markup in here isn't ideal, but it'll have to do for now
   SKILL_TEMPLATE = _.template(
     '<div class="col-md-3 col-sm-4 col-xs-6">
-      <div id="skill-<%= index %>" class="skill-container center-block" style="border-color: <%= borderColor %>;">
+      <div class="skill-container center-block <%= cssClass %>" style="border-color: <%= borderColor %>;">
         <div class="skill">
           <div class="skill-front">
             <img src="images/skills/<%= icon %>" alt="<%= name %>" />
@@ -443,7 +443,6 @@
     $(document).on "click", "#skill-filter ul li a", @filterSkills
     $(document).on "mouseover touchstart", ".skill-container", @styleThisSkill
     $(document).on "mouseout", ".skill-container", @resetSkillStyles
-    $(document).on "click", "#skill-filter ul li a", @setFilterLabel
     # $(document).on "touchstart mouseover", ".skill-container", @applyProficiencyHeight
     # $(document).on "touchend mouseout", ".skill-container", @removeProficiencyHeight
 
@@ -452,7 +451,6 @@
     visibleSkills = _.where(skills, visible: true)
     sortedVisibleSkills = _.sortBy(visibleSkills, "order")
     _.each sortedVisibleSkills, (skill, index) ->
-      skill.index = index # Dynamic property -- this is hacky
       SKILLS_CONTAINER.append SKILL_TEMPLATE(sortedVisibleSkills[index])
 
   bindTouchStartEvent: ->
@@ -460,22 +458,24 @@
     $(@).toggleClass("hover")
 
   filterSkills: (event) =>
-    event.preventDefault() if event
+    event.preventDefault() if event # There's no event object on initial page load
     filter = $(event.target)[0].hash.substring(1) if event
     filteredSkills = []
     _.each SKILLS, (skill, index) ->
-      filteredSkills.push(skill) if _.contains(skill.tags, filter)
-    if filteredSkills.length isnt 0 then @generateSkills(filteredSkills) else @generateSkills(SKILLS)
+      if !_.contains(skill.tags, filter) and filter then skill.cssClass = "filtered" else skill.cssClass = "" # Dynamic property -- this feels hacky
+      filteredSkills.push(skill)
+    @generateSkills(filteredSkills)
+    @setFilterLabel $(event.target).text() if event # filteredSkills.length
 
   styleThisSkill: ->
-    $(".skill-container").css opacity: 0.5, transform: "scale(0.9, 0.9)"
+    $(".skill-container").css opacity: 0.1, transform: "scale(0.9, 0.9)"
     $(@).css opacity: 1
 
   resetSkillStyles: ->
     $(".skill-container").css opacity: "", transform: ""
 
-  setFilterLabel: ->
-    $("#skill-filter .dropdown-toggle").html $(@).text() + '<i class="fa fa-caret-down"></i>'
+  setFilterLabel: (skillLabel) -> # skillCount
+    $("#skill-filter .dropdown-toggle").html "#{skillLabel}<i class='fa fa-caret-down'></i>" # (#{skillCount})
 
   # applyProficiencyHeight: ->
   #   $(@).find('.skill-proficiency').css "max-height": "100%"
