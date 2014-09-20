@@ -415,7 +415,7 @@ module.exports = (grunt) ->
         # cwd: '<%= config.app %>/styles',
         cwd: ".tmp/styles"
         dest: "<%= config.dist %>/styles"
-        src: "{,*/}*.css"
+        src: "{,*/}*.{css,map}"
 
       scripts:
         expand: true
