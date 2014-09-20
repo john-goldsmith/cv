@@ -32,8 +32,12 @@ html.no-js
 
     div.container
 
-      include ./_header
-      include ./_skills.jade
+      div#content
+
+        include ./_header.jade
+        include ./_contact.jade
+        include ./_about.jade
+        include ./_skills.jade
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->

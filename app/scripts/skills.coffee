@@ -2,10 +2,10 @@
 
   SKILLS_CONTAINER = $("#skills")
 
-  # Having view markup in here isn"t ideal, but it'll have to do for now
+  # Having view markup in here isn't ideal, but it'll have to do for now
   SKILL_TEMPLATE = _.template(
-    '<div class="col-md-2 col-sm-3 col-xs-6">
-      <div class="skill-container" style="border-color: <%= borderColor %>;">
+    '<div class="col-md-3 col-sm-4 col-xs-6">
+      <div id="skill-<%= index %>" class="skill-container center-block" style="border-color: <%= borderColor %>;">
         <div class="skill">
           <div class="skill-front">
             <img src="images/skills/<%= icon %>" alt="<%= name %>" />
@@ -18,8 +18,8 @@
           </div>
         </div>
       </div>
-    </div>')
-  # style="height: <%= proficiency %>%;"
+    </div>') # style="height: <%= proficiency %>%;"
+
   SKILLS = [
     {
       name: "Ruby"
@@ -28,8 +28,9 @@
       textColor: "#fff"
       icon: "ruby.png"
       proficiency: 85
+      visible: true
       tags: [
-        "programming"
+        "development"
         "languages"
         "ruby"
         "backend"
@@ -42,8 +43,9 @@
       textColor: "#fff"
       icon: "rails.png"
       proficiency: 85
+      visible: true
       tags: [
-        "programming"
+        "development"
         "frameworks"
         "ruby"
         "backend"
@@ -56,8 +58,9 @@
       textColor: "#fff"
       icon: "php.png"
       proficiency: 100
+      visible: true
       tags: [
-        "programming"
+        "development"
         "languages"
         "backend"
         "php"
@@ -70,8 +73,9 @@
       textColor: "#fff"
       icon: "mysql.png"
       proficiency: 100
+      visible: true
       tags: [
-        "programming"
+        "development"
         "languages"
         "backend"
       ]
@@ -83,8 +87,9 @@
       textColor: "#fff"
       icon: "html5.png"
       proficiency: 100
+      visible: true
       tags: [
-        "programming"
+        "development"
         "languages"
         "frontend"
       ]
@@ -96,8 +101,9 @@
       textColor: "#fff"
       icon: "css3.png" #php.png
       proficiency: 100
+      visible: true
       tags: [
-        "programming"
+        "development"
         "languages"
         "frontend"
       ]
@@ -109,6 +115,7 @@
       textColor: "#fff"
       icon: "bower.png"
       proficiency: 100
+      visible: true
       tags: [
         "package_manager"
         "javascript"
@@ -121,6 +128,7 @@
       textColor: "#fff"
       icon: "grunt.png"
       proficiency: 100
+      visible: true
       tags: [
         "automation"
         "javascript"
@@ -133,8 +141,9 @@
       textColor: "#fff"
       icon: "codeigniter.png"
       proficiency: 100
+      visible: true
       tags: [
-        "programming"
+        "development"
         "frameworks"
         "backend"
         "frontend"
@@ -148,8 +157,9 @@
       textColor: "#fff"
       icon: "jquery.png"
       proficiency: 100
+      visible: true
       tags: [
-        "programming"
+        "development"
         "frameworks"
         "frontend"
         "javascript"
@@ -162,6 +172,7 @@
       textColor: "#fff"
       icon: "photoshop.png"
       proficiency: 100
+      visible: true
       tags: [
         "design"
       ]
@@ -173,6 +184,7 @@
       textColor: "#fff"
       icon: "illustrator.png"
       proficiency: 100
+      visible: true
       tags: [
         "design"
       ]
@@ -184,8 +196,9 @@
       textColor: "#fff"
       icon: "angular.png"
       proficiency: 100
+      visible: true
       tags: [
-        "programming"
+        "development"
         "frameworks"
         "frontend"
         "javascript"
@@ -198,20 +211,22 @@
       textColor: "#fff"
       icon: "git.png"
       proficiency: 100
+      visible: true
       tags: [
         "version_control"
-        "programming"
+        "development"
       ]
     }
     {
       name: "NodeJS"
       order: 2
-      borderColor: "#2b2841"
+      borderColor: "#3b3d33"
       textColor: "#fff"
       icon: "nodejs.png"
       proficiency: 100
+      visible: true
       tags: [
-        "programming"
+        "development"
         "frameworks"
         "backend"
         "javascript"
@@ -224,8 +239,9 @@
       textColor: "#fff"
       icon: "drupal.png"
       proficiency: 100
+      visible: true
       tags: [
-        "programming"
+        "development"
         "frameworks"
         "frontend"
         "backend"
@@ -236,11 +252,12 @@
       name: "Sinatra"
       order: 2
       borderColor: "#c4bca7"
-      textColor: "#fff"
+      textColor: "#000"
       icon: "sinatra.png"
       proficiency: 100
+      visible: true
       tags: [
-        "programming"
+        "development"
         "backend"
         "ruby"
       ]
@@ -252,8 +269,9 @@
       textColor: "#fff"
       icon: "wordpress.png"
       proficiency: 100
+      visible: true
       tags: [
-        "programming"
+        "development"
         "frameworks"
         "frontend"
         "backend"
@@ -267,8 +285,9 @@
       textColor: "#fff"
       icon: "zendframework.png"
       proficiency: 100
+      visible: true
       tags: [
-        "programming"
+        "development"
         "frameworks"
         "frontend"
         "backend"
@@ -282,8 +301,9 @@
       textColor: "#fff"
       icon: "3dsmax.png"
       proficiency: 100
+      visible: true
       tags: [
-        "hobby"
+        "hobbies"
         "design"
       ]
     }
@@ -294,8 +314,9 @@
       textColor: "#fff"
       icon: "maya.png"
       proficiency: 100
+      visible: true
       tags: [
-        "hobby"
+        "hobbies"
         "design"
       ]
     }
@@ -306,8 +327,9 @@
       textColor: "#fff"
       icon: "guitar.png"
       proficiency: 100
+      visible: true
       tags: [
-        "hobby"
+        "hobbies"
       ]
     }
     {
@@ -317,8 +339,9 @@
       textColor: "#fff"
       icon: "coffeescript.png"
       proficiency: 100
+      visible: true
       tags: [
-        "programming"
+        "development"
         "languages"
         "frontend"
         "javascript"
@@ -331,8 +354,9 @@
       textColor: "#fff"
       icon: "joomla.png"
       proficiency: 100
+      visible: true
       tags: [
-        "programming"
+        "development"
         "frameworks"
         "php"
       ]
@@ -344,6 +368,7 @@
       textColor: "#fff"
       icon: "jekyll.png"
       proficiency: 100
+      visible: true
       tags: [
         "frameworks"
       ]
@@ -355,8 +380,9 @@
       textColor: "#fff"
       icon: "bootstrap.png"
       proficiency: 100
+      visible: true
       tags: [
-        "programming"
+        "development"
         "frameworks"
         "frontend"
       ]
@@ -368,6 +394,7 @@
       textColor: "#fff"
       icon: "mac.png"
       proficiency: 100
+      visible: true
       tags: [
         "os"
       ]
@@ -379,6 +406,7 @@
       textColor: "#fff"
       icon: "windows.png"
       proficiency: 100
+      visible: true
       tags: [
         "os"
       ]
@@ -390,34 +418,64 @@
       textColor: "#fff"
       icon: "linux.png"
       proficiency: 100
+      visible: true
       tags: [
         "os"
+      ]
+    }
+    {
+      name: "Raspberry Pi"
+      order: 2
+      borderColor: "#be0940"
+      textColor: "#fff"
+      icon: "raspberrypi.png"
+      proficiency: 100
+      visible: true
+      tags: [
+        "hobbies"
       ]
     }
   ]
 
   constructor: ->
-    @generateSkills(_.sortBy(SKILLS, "order"))
+    @filterSkills()
     $(document).on "touchstart", ".skill-container", @bindTouchStartEvent
-    $(document).on "click", ".skill-tag", @filterSkills
+    $(document).on "click", "#skill-filter ul li a", @filterSkills
+    $(document).on "mouseover touchstart", ".skill-container", @styleThisSkill
+    $(document).on "mouseout", ".skill-container", @resetSkillStyles
+    $(document).on "click", "#skill-filter ul li a", @setFilterLabel
     # $(document).on "touchstart mouseover", ".skill-container", @applyProficiencyHeight
     # $(document).on "touchend mouseout", ".skill-container", @removeProficiencyHeight
 
-  generateSkills: (skills) =>
+  generateSkills: (skills) ->
     SKILLS_CONTAINER.empty()
-    _.each skills, (element, index) ->
-      SKILLS_CONTAINER.append SKILL_TEMPLATE(skills[index])
+    visibleSkills = _.where(skills, visible: true)
+    sortedVisibleSkills = _.sortBy(visibleSkills, "order")
+    _.each sortedVisibleSkills, (skill, index) ->
+      skill.index = index # Dynamic property -- this is hacky
+      SKILLS_CONTAINER.append SKILL_TEMPLATE(sortedVisibleSkills[index])
 
   bindTouchStartEvent: ->
     $(".skill-container").removeClass("hover")
     $(@).toggleClass("hover")
 
-  filterSkills: ->
-    console.log $(@), $(@)[0].hash
-    # filter = $(@)[0].hash.substring(1)
-    # filteredSkills = SKILLS.where "tags" include filter
-    # @generateSkills(filteredSkills)
-    # @generateSkills(SKILLS)
+  filterSkills: (event) =>
+    event.preventDefault() if event
+    filter = $(event.target)[0].hash.substring(1) if event
+    filteredSkills = []
+    _.each SKILLS, (skill, index) ->
+      filteredSkills.push(skill) if _.contains(skill.tags, filter)
+    if filteredSkills.length isnt 0 then @generateSkills(filteredSkills) else @generateSkills(SKILLS)
+
+  styleThisSkill: ->
+    $(".skill-container").css opacity: 0.5, transform: "scale(0.9, 0.9)"
+    $(@).css opacity: 1
+
+  resetSkillStyles: ->
+    $(".skill-container").css opacity: "", transform: ""
+
+  setFilterLabel: ->
+    $("#skill-filter .dropdown-toggle").html $(@).text() + '<i class="fa fa-caret-down"></i>'
 
   # applyProficiencyHeight: ->
   #   $(@).find('.skill-proficiency').css "max-height": "100%"

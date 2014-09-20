@@ -1,11 +1,39 @@
-a.skill-tag.btn.btn-default(href="#frontend") Frontend
-a.skill-tag.btn.btn-default(href="#backend") Backend
-a.skill-tag.btn.btn-default(href="#hobbies") Hobbies
-a.skill-tag.btn.btn-default(href="#ruby") Ruby
-a.skill-tag.btn.btn-default(href="#php") PHP
-a.skill-tag.btn.btn-default(href="#javascript") JavaScript
-a.skill-tag.btn.btn-default(href="#design") Design
-a.skill-tag.btn.btn-default(href="#programming") Programming
-a.skill-tag.btn.btn-default(href="#frameworks") Frameworks
+h3
+  | Skills
+
+div.row
+
+  div.col-xs-12
+
+    div.btn-group.btn-group-lg#skill-filter
+
+      button.btn.btn-primary.dropdown-toggle(type="button" data-toggle="dropdown")
+        | Filter
+        i.fa.fa-caret-down
+
+      ul.dropdown-menu(role="menu")
+        li
+          a(href="#frontend") Frontend
+        li
+          a(href="#backend") Backend
+        li.divider
+        li
+          a(href="#ruby") Ruby
+        li
+          a(href="#php") PHP
+        li
+          a(href="#javascript") JavaScript
+        li.divider
+        li
+          a(href="#development") Development
+        li
+          a(href="#design") Design
+        li.divider
+        li
+          a(href="#hobbies") Hobbies
+        li.divider
+        li
+          a(href="#all") All
 
 div.row#skills
+  //- This gets emptied and populated with skills
