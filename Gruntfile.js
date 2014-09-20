@@ -19,6 +19,7 @@
 // Copy HTML from .tmp to dist
 // Copy CSS from .tmp/styles to dist/styles
 // Copy JS from .tmp/scripts to dist/scripts
+// Copy dist to root for GitHub pages
 
 module.exports = function (grunt) {
 
@@ -200,7 +201,8 @@ module.exports = function (grunt) {
           }
         ]
       },
-      server: '.tmp'
+      server: '.tmp',
+      githubpages: ['fonts', 'images', 'scripts', 'styles', 'index.html', 'favicon.ico', 'robots.txt']
     },
 
     // Make sure code styles are up to par and there are no obvious mistakes
@@ -295,8 +297,8 @@ module.exports = function (grunt) {
             '<%= config.dist %>/scripts/{,*/}*.js',
             '<%= config.dist %>/styles/{,*/}*.css',
             '<%= config.dist %>/images/{,*/}*.*',
-            '<%= config.dist %>/styles/fonts/{,*/}*.*',
-            '<%= config.dist %>/*.{ico,png,jpg,.jpeg,gif}'
+            '<%= config.dist %>/fonts/{,*/}*.*',
+            '<%= config.dist %>/*.{ico,png,jpg,jpeg,gif}'
           ]
         }
       }
@@ -357,7 +359,7 @@ module.exports = function (grunt) {
           collapseBooleanAttributes: true,
           collapseWhitespace: true,
           conservativeCollapse: true,
-          removeAttributeQuotes: true,
+          removeAttributeQuotes: false,
           removeCommentsFromCDATA: true,
           removeEmptyAttributes: true,
           removeOptionalTags: true,
@@ -411,28 +413,28 @@ module.exports = function (grunt) {
             cwd: '<%= config.app %>',
             dest: '<%= config.dist %>',
             src: [
-              '*.{ico,png,txt}',
-              'images/{,*/}*.webp',
+              '*.{ico,txt}'
+              // 'images/{,*/}*.webp',
               // '{,*/}*.html',
-              'fonts/{,*/}*.{eot,svg,ttf,woff,woff2,otf}'
+              // 'fonts/{,*/}*.{eot,svg,ttf,woff,woff2,otf}'
             ]
           },
           {
             cwd: '.tmp',
             expand: true,
-            src: '*.html',
+            src: ['index.html'],
             dest: '<%= config.dist %>'
           },
-          {
-            src: 'node_modules/apache-server-configs/dist/.htaccess',
-            dest: '<%= config.dist %>/.htaccess'
-          },
+          // {
+          //   src: 'node_modules/apache-server-configs/dist/.htaccess',
+          //   dest: '<%= config.dist %>/.htaccess'
+          // },
           {
             expand: true,
             dot: true,
-            cwd: '.',
-            src: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*',
-            dest: '<%= config.dist %>'
+            cwd: './bower_components/fontawesome/fonts/',
+            src: '*.{eot,svg,ttf,woff,woff2,otf}',
+            dest: '<%= config.dist %>/fonts'
           }
         ]
       },
@@ -441,7 +443,7 @@ module.exports = function (grunt) {
         dot: true,
         // cwd: '<%= config.app %>/styles',
         cwd: '.tmp/styles',
-        dest: '<%= config.dist %>/styles/',
+        dest: '<%= config.dist %>/styles',
         src: '{,*/}*.css'
       },
       scripts: {
@@ -459,6 +461,12 @@ module.exports = function (grunt) {
         cwd: '<%= config.app %>/fonts',
         dest: '.tmp/fonts/',
         src: '{,*/}*.{eot,svg,ttf,woff,woff2,otf}'
+      },
+      githubpages: {
+        expand: true,
+        cwd: '<%= config.dist %>',
+        dest: '.',
+        src: '**/*'
       }
     },
 
@@ -564,20 +572,24 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'clean:githubpages',
     'jade',
     'coffee:dist',
     'wiredep',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
-    'concat',
-    'cssmin',
+    // 'concat',
+    // 'cssmin',
     'uglify',
     'copy:dist',
+    'copy:styles',
+    'copy:scripts',
     'modernizr',
     // 'rev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'copy:githubpages'
   ]);
 
   grunt.registerTask('default', [

@@ -1,4 +1,4 @@
-@Skill = class Skill extends @Site
+class Skill
 
   SKILLS_CONTAINER = $("#skills")
 
