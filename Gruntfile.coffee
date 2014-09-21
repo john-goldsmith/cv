@@ -6,19 +6,6 @@
 # If you want to recursively match all subfolders, use:
 # 'test/spec/**/*.js'
 
-# Order needed:
-# Compile Jade into HTML (and dump into .tmp)
-# Compile Coffee into JS (and dump into .tmp/scripts)
-# Compile SASS into CSS (and dump into .tmp/styles)
-# Minify HTML
-# Minify and concat CSS
-# Minify and concat JS
-# <vendor libs>
-# Copy HTML from .tmp to dist
-# Copy CSS from .tmp/styles to dist/styles
-# Copy JS from .tmp/scripts to dist/scripts
-# Copy dist to root for GitHub pages
-
 module.exports = (grunt) ->
 
   grunt.loadNpmTasks "grunt-contrib-jade"
@@ -51,7 +38,7 @@ module.exports = (grunt) ->
         tasks: ["wiredep"]
 
       coffee:
-        files: ["<%= config.app %>/scripts/{,*/}*.{coffee,litcoffee,coffee.md}"]
+        files: ["<%= config.app %>/scripts/{,*/}*.coffee"]
         tasks: [
           "newer:coffee:dist"
           "wiredep"
@@ -105,23 +92,23 @@ module.exports = (grunt) ->
           livereload: "<%= connect.options.livereload %>"
         files: [
           # '<%= config.app %>/{,*/}*.html',
-          ".tmp/{,*/}*.html"
-          ".tmp/styles/{,*/}*.css"
-          ".tmp/styles/{,*/}*.js"
+          "<%= config.tmp %>/{,*/}*.html"
+          "<%= config.tmp %>/styles/{,*/}*.css"
+          "<%= config.tmp %>/styles/{,*/}*.js"
           "<%= config.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg,ico}"
         ]
 
     # Compiles CoffeeScript to JavaScript
     coffee:
       options:
-        sourceMap: true
+        sourceMap: false
         sourceRoot: ""
       dist:
         files: [
           expand: true
           cwd: "<%= config.app %>/scripts"
           src: "{,*/}*.coffee"
-          dest: ".tmp/scripts"
+          dest: "<%= config.tmp %>/scripts"
           ext: ".js"
         ]
       test:
@@ -129,7 +116,7 @@ module.exports = (grunt) ->
           expand: true
           cwd: "test/spec"
           src: "{,*/}*.coffee"
-          dest: ".tmp/spec"
+          dest: "<%= config.tmp %>/spec"
           ext: ".js"
         ]
 
@@ -144,7 +131,7 @@ module.exports = (grunt) ->
         options:
           middleware: (connect) ->
             [
-              connect.static(".tmp")
+              connect.static("<%= config.tmp %>")
               connect().use("/bower_components", connect.static("./bower_components"))
               connect.static(config.app)
             ]
@@ -154,7 +141,7 @@ module.exports = (grunt) ->
           port: 9001
           middleware: (connect) ->
             [
-              connect.static(".tmp")
+              connect.static("<%= config.tmp %>")
               connect.static("test")
               connect().use("/bower_components", connect.static("./bower_components"))
               connect.static(config.app)
@@ -164,28 +151,25 @@ module.exports = (grunt) ->
           base: "<%= config.dist %>"
           livereload: false
 
-
     # Empties folders to start fresh
     clean:
       dist:
         files: [
           dot: true
           src: [
-            ".tmp"
+            "<%= config.tmp %>"
             "<%= config.dist %>/*"
             "!<%= config.dist %>/.git*"
+            "./fonts"
+            "./images"
+            "./application.min.js"
+            "./application.min.css"
+            "./index.html"
+            "./favicon.ico"
+            "./robots.txt"
           ]
         ]
-      server: ".tmp"
-      githubpages: [
-        "fonts"
-        "images"
-        "scripts"
-        "styles"
-        "index.html"
-        "favicon.ico"
-        "robots.txt"
-      ]
+      server: "<%= config.tmp %>"
 
     # Make sure code styles are up to par and there are no obvious mistakes
     jshint:
@@ -209,22 +193,22 @@ module.exports = (grunt) ->
     # Compiles Sass to CSS and generates necessary files if requested
     sass:
       options:
-        sourcemap: true
+        # sourcemap: false
         loadPath: "bower_components"
       dist:
         files: [
           expand: true
           cwd: "<%= config.app %>/styles"
-          src: ["*.{scss,sass}"]
-          dest: ".tmp/styles"
+          src: "*.{scss,sass}"
+          dest: "<%= config.tmp %>/styles"
           ext: ".css"
         ]
       server:
         files: [
           expand: true
           cwd: "<%= config.app %>/styles"
-          src: ["*.{scss,sass}"]
-          dest: ".tmp/styles"
+          src: "*.{scss,sass}"
+          dest: "<%= config.tmp %>/styles"
           ext: ".css"
         ]
 
@@ -240,9 +224,9 @@ module.exports = (grunt) ->
       dist:
         files: [
           expand: true
-          cwd: ".tmp/styles/"
+          cwd: "<%= config.tmp %>/styles/"
           src: "{,*/}*.css"
-          dest: ".tmp/styles/"
+          dest: "<%= config.tmp %>/styles/"
         ]
 
     # Automatically inject Bower components into the HTML file
@@ -273,7 +257,7 @@ module.exports = (grunt) ->
     useminPrepare:
       options:
         dest: "<%= config.dist %>"
-      html: ".tmp/index.html"
+      html: "<%= config.tmp %>/index.html"
 
     # Performs rewrites based on rev and the useminPrepare configuration
     usemin:
@@ -318,92 +302,92 @@ module.exports = (grunt) ->
           useShortDoctype: true
         files: [
           expand: true
-          cwd: "<%= config.dist %>"
+          cwd: "<%= config.tmp %>"
           src: "{,*/}*.html"
-          dest: "<%= config.dist %>"
+          dest: "<%= config.tmp %>"
         ]
 
     # By default, your `index.html`'s <!-- Usemin block --> will take care
     # of minification. These next options are pre-configured if you do not
     # wish to use the Usemin blocks.
-    # cssmin:
-    #   dist:
-    #     files:
-    #       "<%= config.dist %>/styles/main.css": [
-    #         ".tmp/styles/{,*/}*.css"
-    #         "<%= config.app %>/styles/{,*/}*.css"
-    #       ]
+    cssmin:
+      dist:
+        files: [
+          expand: true
+          cwd: "<%= config.tmp %>/styles/"
+          src: "application.css"
+          dest: "<%= config.tmp %>/styles/"
+          ext: ".min.css"
+        ]
 
-    # uglify:
-    #   dist:
-    #     files:
-    #       "<%= config.dist %>/scripts/scripts.js": ["<%= config.dist %>/scripts/scripts.js"]
+    uglify:
+      dist:
+        files: [
+          expand: true
+          cwd: "<%= config.tmp %>/scripts/"
+          src: "application.js"
+          dest: "<%= config.tmp %>/scripts/"
+          ext: ".min.js"
+        ]
 
-    # concat:
-    #   dist: {}
+    concat:
+      dist:
+        files:
+          "<%= config.tmp %>/scripts/application.js": "<%= config.tmp %>/scripts/*.js"
+          "<%= config.tmp %>/styles/application.css": "<%= config.tmp %>/styles/*.css"
 
     # Copies remaining files to places other tasks can use
     copy:
-      dist:
+      images:
         files: [
           {
             expand: true
-            dot: true
-            cwd: "<%= config.app %>"
-            dest: "<%= config.dist %>"
-            src: ["*.{ico,txt}"]
+            cwd: "<%= config.app %>/images/"
+            src: "{,*/}*.{jpg,jpeg,png,gif}"
+            dest: "<%= config.tmp %>/images/"
           }
+        ]
+      fonts:
+        files: [
           {
-            # 'images/{,*/}*.webp',
-            # '{,*/}*.html',
-            # 'fonts/{,*/}*.{eot,svg,ttf,woff,woff2,otf}'
-            cwd: ".tmp"
             expand: true
-            src: ["index.html"]
-            dest: "<%= config.dist %>"
+            cwd: "<%= config.app %>/fonts/"
+            src: "{,*/}*.{eot,svg,ttf,woff,woff2,otf}"
+            dest: "<%= config.tmp %>/fonts/"
           }
+        ]
+      vendor:
+        files: [
           {
-            # {
-            #   src: 'node_modules/apache-server-configs/dist/.htaccess',
-            #   dest: '<%= config.dist %>/.htaccess'
-            # },
             expand: true
-            dot: true
             cwd: "./bower_components/fontawesome/fonts/"
             src: "*.{eot,svg,ttf,woff,woff2,otf}"
-            dest: "<%= config.dist %>/fonts"
-          }
-          {
-            expand: true
-            dot: true
-            cwd: "<%= config.app %>/fonts/cronos/"
-            src: "*.{eot,svg,ttf,woff,woff2,otf}"
-            dest: "<%= config.dist %>/fonts"
+            dest: "<%= config.tmp %>/fonts"
           }
           {
             expand: true
             dot: true
             cwd: "./bower_components/fontawesome/css/"
             src: "font-awesome.min.css"
-            dest: ".tmp/styles/"
+            dest: "<%= config.tmp %>/styles/"
           }
           {
             expand: true
             cwd: "./bower_components/jquery/dist/"
             src: [
               "jquery.min.js"
-              "jquery.min.map"
+              # "jquery.min.map"
             ]
-            dest: ".tmp/scripts/vendor/"
+            dest: "<%= config.tmp %>/scripts"
           }
           {
             expand: true
             cwd: "./bower_components/underscore/"
             src: [
               "underscore-min.js"
-              "underscore-min.map"
+              # "underscore-min.map"
             ]
-            dest: ".tmp/scripts/vendor/"
+            dest: "<%= config.tmp %>/scripts"
           }
           {
             expand: true
@@ -412,34 +396,60 @@ module.exports = (grunt) ->
               "transition.js"
               "dropdown.js"
             ]
-            dest: ".tmp/scripts/vendor/"
+            dest: "<%= config.tmp %>/scripts/"
+          }
+          # {
+          #   expand: true
+          #   cwd: "./bower_components/bootstrap-sass-official/assets/fonts/bootstrap/"
+          #   src: *.{eot,svg,ttf,woff,woff2,otf}
+          #   dest: "<%= config.tmp %>/fonts/"
+          # }
+          {
+            expand: true
+            cwd: "./bower_components/modernizr/"
+            src: "modernizr.js"
+            dest: "<%= config.tmp %>/scripts/"
           }
         ]
-
-      styles:
-        expand: true
-        dot: true
-        # cwd: '<%= config.app %>/styles',
-        cwd: ".tmp/styles"
-        dest: "<%= config.dist %>/styles"
-        src: "{,*/}*.{css,map}"
-
-      scripts:
-        expand: true
-        dot: true
-        # cwd: '<%= config.app %>/scripts',
-        cwd: ".tmp/scripts"
-        dest: "<%= config.dist %>/scripts"
-        src: ["{,*/}*.{js,map}"]
-
-      fonts:
-        expand: true
-        dot: true
-        # cwd: '<%= config.app %>/styles',
-        cwd: "<%= config.app %>/fonts"
-        dest: ".tmp/fonts/"
-        src: "{,*/}*.{eot,svg,ttf,woff,woff2,otf}"
-
+      dist:
+        files: [
+          {
+            expand: true
+            cwd: "<%= config.app %>/"
+            src: "*.{ico,txt}" # favicon.ico, robots.txt
+            dest: "<%= config.dist %>/"
+          }
+          {
+            expand: true
+            cwd: "<%= config.tmp %>/"
+            src: "index.html"
+            dest: "<%= config.dist %>/"
+          }
+          {
+            expand: true
+            cwd: "<%= config.tmp %>/fonts/"
+            src: "{,*/}*.{eot,svg,ttf,woff,woff2,otf}"
+            dest: "<%= config.dist %>/fonts/"
+          }
+          {
+            expand: true
+            cwd: "<%= config.tmp %>/scripts/"
+            src: "application.min.js"
+            dest: "<%= config.dist %>/scripts/"
+          }
+          {
+            expand: true
+            cwd: "<%= config.tmp %>/styles/"
+            src: "application.min.css"
+            dest: "<%= config.dist %>/styles/"
+          }
+          {
+            expand: true
+            cwd: "<%= config.tmp %>/images/"
+            src: "{,*/}*.{jpg,jpeg,png,gif}"
+            dest: "<%= config.dist %>/images/"
+          }
+        ]
       githubpages:
         expand: true
         cwd: "<%= config.dist %>"
@@ -489,8 +499,8 @@ module.exports = (grunt) ->
         files: [
           expand: true
           cwd: "<%= config.app %>"
-          dest: ".tmp"
-          src: "**/*.jade"
+          dest: "<%= config.tmp %>"
+          src: "index.jade"
           ext: ".html"
         ]
 
@@ -532,25 +542,44 @@ module.exports = (grunt) ->
     return
 
   grunt.registerTask "build", [
+    # Order needed (clean, compile, minify, concat, copy):
+    # [X] Clean .tmp, dist, fonts, images, scripts, styles, favicon.ico, index.html and robots.txt
+    # [X] Compile Jade into HTML, place in .tmp
+    # [X] Compile Coffee into JS, place in .tmp/scripts
+    # [X] Compile SASS into CSS, place in .tmp/styles
+    # [X] Minify index.html
+    # [X] Copy jQuery, Underscore, Modernizr, Font Awesome, dropdown.js, and transition.js to .tmp
+    # [-] Concat CSS into application.css
+    # [X] Auto-prefix application.css
+    # [X] Concat JS (including vendor libs) into application.js
+    # [X] Minify application.css
+    # [X] Uglify application.js
+    # [X] Copy index.html from .tmp to dist
+    # [X] Copy application.css from .tmp/styles to dist/styles
+    # [X] Copy application.js from .tmp/scripts to dist/scripts
+    # [X] Copy dist to root for GitHub pages
     "clean:dist"
-    "clean:githubpages"
-    "jade"
+    "jade:dist"
     "coffee:dist"
-    "wiredep"
-    "useminPrepare"
-    "concurrent:dist"
-    # "autoprefixer"
-    # "concat",
-    # "cssmin",
-    # "uglify"
+    "sass:dist"
+    "copy:fonts"
+    "copy:images"
+    "copy:vendor"
+    "htmlmin:dist"
+    "autoprefixer:dist"
+    "concat:dist" # This only does JS because only one CSS file, application.css, exists
+    "cssmin:dist"
+    "uglify:dist"
     "copy:dist"
-    "copy:styles"
-    "copy:scripts"
-    "modernizr"
-    # 'rev',
-    "usemin"
-    "htmlmin"
     "copy:githubpages"
+    # "wiredep"
+    # "useminPrepare"
+    # "concurrent:dist"
+    # "copy:styles"
+    # "copy:scripts"
+    # "modernizr"
+    # "rev"
+    # "usemin"
   ]
 
   grunt.registerTask "default", [
