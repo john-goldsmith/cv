@@ -333,7 +333,14 @@ module.exports = (grunt) ->
     concat:
       dist:
         files:
-          "<%= config.tmp %>/scripts/application.js": "<%= config.tmp %>/scripts/*.js"
+          "<%= config.tmp %>/scripts/application.js": [
+            "<%= config.tmp %>/scripts/modernizr.js"
+            "<%= config.tmp %>/scripts/jquery.min.js"
+            "<%= config.tmp %>/scripts/underscore-min.js"
+            "<%= config.tmp %>/scripts/*.js"
+            # "<%= config.tmp %>/scripts/transition.js"
+            # "<%= config.tmp %>/scripts/skills.js"
+          ]
           "<%= config.tmp %>/styles/application.css": "<%= config.tmp %>/styles/*.css"
 
     # Copies remaining files to places other tasks can use
