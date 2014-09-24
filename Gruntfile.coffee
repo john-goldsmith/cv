@@ -165,7 +165,9 @@ module.exports = (grunt) ->
             "./application.min.js"
             "./application.min.css"
             "./index.html"
-            "./favicon.ico"
+            "./*.ico"
+            "./*.png"
+            "./browserconfig.xml"
             "./robots.txt"
           ]
         ]
@@ -423,7 +425,7 @@ module.exports = (grunt) ->
           {
             expand: true
             cwd: "<%= config.app %>/"
-            src: "*.{ico,txt}" # favicon.ico, robots.txt
+            src: "*.{ico,txt,xml,png}" # favicon.ico, robots.txt
             dest: "<%= config.dist %>/"
           }
           {
