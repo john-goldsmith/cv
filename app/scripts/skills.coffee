@@ -119,6 +119,7 @@ class Skill
       tags: [
         "package_manager"
         "javascript"
+        "development"
       ]
     }
     {
@@ -132,6 +133,7 @@ class Skill
       tags: [
         "automation"
         "javascript"
+        "development"
       ]
     }
     {
@@ -285,7 +287,7 @@ class Skill
       textColor: "#fff"
       icon: "zendframework.png"
       proficiency: 100
-      visible: true
+      visible: false
       tags: [
         "development"
         "frameworks"
@@ -433,6 +435,111 @@ class Skill
       visible: true
       tags: [
         "hobbies"
+      ]
+    }
+    {
+      name: "Sass"
+      order: 29
+      borderColor: "#c8508c"
+      textColor: "#fff"
+      icon: "sass.png"
+      proficiency: 100
+      visible: true
+      tags: [
+        "frontend"
+        "development"
+      ]
+    }
+    {
+      name: "Less"
+      order: 30
+      borderColor: "#355689"
+      textColor: "#fff"
+      icon: "less.png"
+      proficiency: 100
+      visible: true
+      tags: [
+        "frontend"
+        "development"
+      ]
+    }
+    {
+      name: "UI / UX"
+      order: 31
+      borderColor: "#5bcc8b"
+      textColor: "#fff"
+      icon: "uiux.png"
+      proficiency: 100
+      visible: true
+      tags: [
+        "design"
+        "frontend"
+      ]
+    }
+    {
+      name: "TDD / BDD"
+      order: 32
+      borderColor: "#21242e"
+      textColor: "#fff"
+      icon: "tdd.png"
+      proficiency: 100
+      visible: true
+      tags: [
+        "backend"
+        "development"
+      ]
+    }
+    {
+      name: "REST"
+      order: 33
+      borderColor: "#21242e"
+      textColor: "#fff"
+      icon: "rest.png"
+      proficiency: 100
+      visible: true
+      tags: [
+        "backend"
+        "development"
+      ]
+    }
+    {
+      name: "Jenkins"
+      order: 34
+      borderColor: "#f12e21"
+      textColor: "#fff"
+      icon: "jenkins.png"
+      proficiency: 100
+      visible: true
+      tags: [
+        "backend"
+        "development"
+      ]
+    }
+    {
+      name: "Yeoman"
+      order: 35
+      borderColor: "#be0940"
+      textColor: "#fff"
+      icon: "yeoman.png"
+      proficiency: 100
+      visible: true
+      tags: [
+        "backend"
+        "frontend"
+        "development"
+      ]
+    }
+    {
+      name: "RabbitMQ"
+      order: 36
+      borderColor: "#ff6600"
+      textColor: "#fff"
+      icon: "rabbitmq.png"
+      proficiency: 100
+      visible: true
+      tags: [
+        "backend"
+        "development"
       ]
     }
   ]
