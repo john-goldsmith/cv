@@ -49,11 +49,12 @@ class Skill
         "frameworks"
         "ruby"
         "backend"
+        "frontend"
       ]
     }
     {
       name: "PHP"
-      order: 3
+      order: 14
       borderColor: "#5967a8"
       textColor: "#fff"
       icon: "php.png"
@@ -68,13 +69,14 @@ class Skill
     }
     {
       name: "MySQL"
-      order: 4
+      order: 20
       borderColor: "#007d7e"
       textColor: "#fff"
       icon: "mysql.png"
       proficiency: 100
       visible: true
       tags: [
+        "database"
         "development"
         "languages"
         "backend"
@@ -82,7 +84,7 @@ class Skill
     }
     {
       name: "HTML5"
-      order: 5
+      order: 4
       borderColor: "#e64c17"
       textColor: "#fff"
       icon: "html5.png"
@@ -96,7 +98,7 @@ class Skill
     }
     {
       name: "CSS3"
-      order: 6
+      order: 5
       borderColor: "#006ebd"
       textColor: "#fff"
       icon: "css3.png" #php.png
@@ -110,7 +112,7 @@ class Skill
     }
     {
       name: "Bower"
-      order: 7
+      order: 30
       borderColor: "#553728"
       textColor: "#fff"
       icon: "bower.png"
@@ -124,7 +126,7 @@ class Skill
     }
     {
       name: "Grunt"
-      order: 8
+      order: 12
       borderColor: "#2f0c00"
       textColor: "#fff"
       icon: "grunt.png"
@@ -134,11 +136,13 @@ class Skill
         "automation"
         "javascript"
         "development"
+        "backend"
+        "frontend"
       ]
     }
     {
       name: "CodeIgniter"
-      order: 9
+      order: 15
       borderColor: "#ff4400"
       textColor: "#fff"
       icon: "codeigniter.png"
@@ -154,7 +158,7 @@ class Skill
     }
     {
       name: "jQuery"
-      order: 10
+      order: 9
       borderColor: "#000004"
       textColor: "#fff"
       icon: "jquery.png"
@@ -169,7 +173,7 @@ class Skill
     }
     {
       name: "Photoshop"
-      order: 11
+      order: 31
       borderColor: "#2b2841"
       textColor: "#fff"
       icon: "photoshop.png"
@@ -181,7 +185,7 @@ class Skill
     }
     {
       name: "Illustrator"
-      order: 12
+      order: 32
       borderColor: "#6b5945"
       textColor: "#fff"
       icon: "illustrator.png"
@@ -192,8 +196,8 @@ class Skill
       ]
     }
     {
-      name: "Angular"
-      order: 13
+      name: "AngularJS"
+      order: 11
       borderColor: "#c8464b"
       textColor: "#fff"
       icon: "angular.png"
@@ -208,7 +212,7 @@ class Skill
     }
     {
       name: "Git"
-      order: 14
+      order: 22
       borderColor: "#000000"
       textColor: "#fff"
       icon: "git.png"
@@ -221,7 +225,7 @@ class Skill
     }
     {
       name: "NodeJS"
-      order: 15
+      order: 13
       borderColor: "#3b3d33"
       textColor: "#fff"
       icon: "nodejs.png"
@@ -236,7 +240,7 @@ class Skill
     }
     {
       name: "Drupal"
-      order: 16
+      order: 18
       borderColor: "#005890"
       textColor: "#fff"
       icon: "drupal.png"
@@ -245,14 +249,14 @@ class Skill
       tags: [
         "development"
         "frameworks"
-        "frontend"
         "backend"
+        "frontend"
         "php"
       ]
     }
     {
       name: "Sinatra"
-      order: 17
+      order: 3
       borderColor: "#c4bca7"
       textColor: "#000"
       icon: "sinatra.png"
@@ -266,7 +270,7 @@ class Skill
     }
     {
       name: "WordPress"
-      order: 18
+      order: 16
       borderColor: "#464646"
       textColor: "#fff"
       icon: "wordpress.png"
@@ -275,8 +279,8 @@ class Skill
       tags: [
         "development"
         "frameworks"
-        "frontend"
         "backend"
+        "frontend"
         "php"
       ]
     }
@@ -298,7 +302,7 @@ class Skill
     }
     {
       name: "3ds Max"
-      order: 20
+      order: 33
       borderColor: "#0a4f50"
       textColor: "#fff"
       icon: "3dsmax.png"
@@ -311,7 +315,7 @@ class Skill
     }
     {
       name: "Maya"
-      order: 21
+      order: 34
       borderColor: "#0c4b4b"
       textColor: "#fff"
       icon: "maya.png"
@@ -324,7 +328,7 @@ class Skill
     }
     {
       name: "Guitar"
-      order: 22
+      order: 35
       borderColor: "#b15301"
       textColor: "#fff"
       icon: "guitar.png"
@@ -336,7 +340,7 @@ class Skill
     }
     {
       name: "CoffeeScript"
-      order: 23
+      order: 10
       borderColor: "#28334c"
       textColor: "#fff"
       icon: "coffeescript.png"
@@ -351,7 +355,7 @@ class Skill
     }
     {
       name: "Joomla"
-      order: 24
+      order: 17
       borderColor: "#5fa920"
       textColor: "#fff"
       icon: "joomla.png"
@@ -361,23 +365,25 @@ class Skill
         "development"
         "frameworks"
         "php"
+        "backend"
+        "frontend"
       ]
     }
     {
       name: "Jekyll"
-      order: 25
+      order: 29
       borderColor: "#b80000"
       textColor: "#fff"
       icon: "jekyll.png"
       proficiency: 100
-      visible: true
+      visible: false
       tags: [
         "frameworks"
       ]
     }
     {
       name: "Bootstrap"
-      order: 2
+      order: 6
       borderColor: "#31153e"
       textColor: "#fff"
       icon: "bootstrap.png"
@@ -391,7 +397,7 @@ class Skill
     }
     {
       name: "Mac"
-      order: 26
+      order: 37
       borderColor: "#1d77f6"
       textColor: "#fff"
       icon: "mac.png"
@@ -403,7 +409,7 @@ class Skill
     }
     {
       name: "Windows"
-      order: 2
+      order: 38
       borderColor: "#0eb9f5"
       textColor: "#fff"
       icon: "windows.png"
@@ -415,19 +421,19 @@ class Skill
     }
     {
       name: "Linux"
-      order: 27
+      order: 39
       borderColor: "#000000"
       textColor: "#fff"
       icon: "linux.png"
       proficiency: 100
-      visible: true
+      visible: false
       tags: [
         "os"
       ]
     }
     {
       name: "Raspberry Pi"
-      order: 28
+      order: 36
       borderColor: "#be0940"
       textColor: "#fff"
       icon: "raspberrypi.png"
@@ -439,7 +445,7 @@ class Skill
     }
     {
       name: "Sass"
-      order: 29
+      order: 7
       borderColor: "#c8508c"
       textColor: "#fff"
       icon: "sass.png"
@@ -452,7 +458,7 @@ class Skill
     }
     {
       name: "Less"
-      order: 30
+      order: 8
       borderColor: "#355689"
       textColor: "#fff"
       icon: "less.png"
@@ -465,7 +471,7 @@ class Skill
     }
     {
       name: "UI / UX"
-      order: 31
+      order: 23
       borderColor: "#5bcc8b"
       textColor: "#fff"
       icon: "uiux.png"
@@ -478,7 +484,7 @@ class Skill
     }
     {
       name: "TDD / BDD"
-      order: 32
+      order: 24
       borderColor: "#21242e"
       textColor: "#fff"
       icon: "tdd.png"
@@ -491,7 +497,7 @@ class Skill
     }
     {
       name: "REST"
-      order: 33
+      order: 25
       borderColor: "#21242e"
       textColor: "#fff"
       icon: "rest.png"
@@ -504,7 +510,7 @@ class Skill
     }
     {
       name: "Jenkins"
-      order: 34
+      order: 27
       borderColor: "#f12e21"
       textColor: "#fff"
       icon: "jenkins.png"
@@ -517,7 +523,7 @@ class Skill
     }
     {
       name: "Yeoman"
-      order: 35
+      order: 28
       borderColor: "#be0940"
       textColor: "#fff"
       icon: "yeoman.png"
@@ -531,13 +537,27 @@ class Skill
     }
     {
       name: "RabbitMQ"
-      order: 36
+      order: 26
       borderColor: "#ff6600"
       textColor: "#fff"
       icon: "rabbitmq.png"
       proficiency: 100
       visible: true
       tags: [
+        "backend"
+        "development"
+      ]
+    }
+    {
+      name: "PostgreSQL"
+      order: 21
+      borderColor: "#2f6592"
+      textColor: "#fff"
+      icon: "postgres.png"
+      proficiency: 100
+      visible: true
+      tags: [
+        "database"
         "backend"
         "development"
       ]
