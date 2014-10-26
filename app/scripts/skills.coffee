@@ -4,7 +4,7 @@ class Skill
 
   # Having view markup in here isn't ideal, but it'll have to do for now
   SKILL_TEMPLATE = _.template(
-    '<div class="col-md-3 col-sm-4 col-xs-6">
+    '<div class="col-md-2 col-sm-3 col-xs-6">
       <div class="skill-container center-block <%= cssClass %>" style="border-color: <%= borderColor %>;">
         <div class="skill">
           <div class="skill-front">

@@ -1,0 +1,41 @@
+div.jumbotron.hidden-xs#diverse
+  div.container
+
+    h3 Diverse
+
+    div.row
+
+      div.col-sm-4.col-sm-offset-4.col-xs-12
+
+        div.btn-group#skill-filter
+
+          button.btn.btn-primary.dropdown-toggle(type="button" data-toggle="dropdown")
+            | Filter
+            i.fa.fa-caret-down
+
+          ul.dropdown-menu(role="menu")
+            li
+              a(href="#frontend") Frontend
+            li
+              a(href="#backend") Backend
+            li.divider
+            li
+              a(href="#ruby") Ruby
+            li
+              a(href="#php") PHP
+            li
+              a(href="#javascript") JavaScript
+            li.divider
+            li
+              a(href="#development") Development
+            li
+              a(href="#design") Design
+            li.divider
+            li
+              a(href="#hobbies") Hobbies
+            li.divider
+            li
+              a(href="#") All
+
+    div.row#skills
+      //- This gets emptied and populated with skills

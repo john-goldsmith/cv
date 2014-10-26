@@ -33,6 +33,13 @@ module.exports = (grunt) ->
     # Watches files for changes and runs tasks based on the changed files
     watch:
 
+      # all:
+      #   options:
+      #     livereload: true
+
+      # options:
+      #   livereload: true
+
       bower:
         files: ["bower.json"]
         tasks: ["wiredep"]
@@ -47,8 +54,6 @@ module.exports = (grunt) ->
       js:
         files: ["<%= config.app %>/scripts/{,*/}*.js"]
         tasks: ["jshint"]
-        options:
-          livereload: true
 
       jstest:
         files: ["test/spec/{,*/}*.js"]
@@ -66,11 +71,17 @@ module.exports = (grunt) ->
         files: ["Gruntfile.coffee"]
 
       sass:
-        files: ["<%= config.app %>/styles/{,*/}*.{scss,sass}"]
+        files: ["<%= config.app %>/styles/**/{,*/}*.{scss,sass}"]
         tasks: [
           "sass:server"
           "autoprefixer"
         ]
+        # options:
+          # livereload: false
+
+      css:
+        files: ["<%= config.tmp %>/styles/*.css"]
+        tasks: []
 
       # styles:
       #   files: ['<%= config.app %>/styles/{,*/}*.css']
@@ -89,13 +100,13 @@ module.exports = (grunt) ->
 
       livereload:
         options:
-          livereload: "<%= connect.options.livereload %>"
+          livereload: true
         files: [
           # '<%= config.app %>/{,*/}*.html',
           "<%= config.tmp %>/{,*/}*.html"
           "<%= config.tmp %>/styles/{,*/}*.css"
-          "<%= config.tmp %>/styles/{,*/}*.js"
-          "<%= config.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg,ico}"
+          "<%= config.tmp %>/scripts/{,*/}*.js"
+          "<%= config.tmp %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg,ico}"
         ]
 
     # Compiles CoffeeScript to JavaScript
@@ -126,30 +137,34 @@ module.exports = (grunt) ->
         port: 9000
         open: true
         livereload: 35729
+        # livereload: true
         hostname: "0.0.0.0" # Change this to '0.0.0.0' to access the server from outside
+        base: "<%= config.tmp %>"
       livereload:
         options:
           middleware: (connect) ->
             [
-              connect.static("<%= config.tmp %>")
-              connect().use("/bower_components", connect.static("./bower_components"))
-              connect.static(config.app)
+              # connect.static("<%= config.tmp %>")
+              # connect().use("/bower_components", connect.static("./bower_components"))
+              # connect.static(config.app)
+              # connect.static(".tmp")
+              connect.static(config.tmp)
             ]
-      test:
-        options:
-          open: false
-          port: 9001
-          middleware: (connect) ->
-            [
-              connect.static("<%= config.tmp %>")
-              connect.static("test")
-              connect().use("/bower_components", connect.static("./bower_components"))
-              connect.static(config.app)
-            ]
-      dist:
-        options:
-          base: "<%= config.dist %>"
-          livereload: false
+      # test:
+      #   options:
+      #     open: false
+      #     port: 9001
+      #     middleware: (connect) ->
+      #       [
+      #         connect.static("<%= config.tmp %>")
+      #         connect.static("test")
+      #         connect().use("/bower_components", connect.static("./bower_components"))
+      #         connect.static(config.app)
+      #       ]
+      # dist:
+      #   options:
+      #     base: "<%= config.dist %>"
+      #     livereload: true
 
     # Empties folders to start fresh
     clean:
@@ -251,6 +266,15 @@ module.exports = (grunt) ->
             "<%= config.dist %>/images/{,*/}*.*"
             "<%= config.dist %>/fonts/{,*/}*.*"
             "<%= config.dist %>/*.{ico,png,jpg,jpeg,gif}"
+          ]
+      tmp:
+        files:
+          src: [
+            "<%= config.tmp %>/scripts/{,*/}*.js"
+            "<%= config.tmp %>/styles/{,*/}*.css"
+            "<%= config.tmp %>/images/{,*/}*.*"
+            "<%= config.tmp %>/fonts/{,*/}*.*"
+            "<%= config.tmp %>/*.{ico,png,jpg,jpeg,gif}"
           ]
 
     # Reads HTML for usemin blocks to enable smart builds that automatically
@@ -404,6 +428,24 @@ module.exports = (grunt) ->
             src: [
               "transition.js"
               "dropdown.js"
+              "scrollspy.js"
+              "collapse.js"
+            ]
+            dest: "<%= config.tmp %>/scripts/"
+          }
+          {
+            expand: true
+            cwd: "./bower_components/jquery.scrollTo/"
+            src: [
+              "jquery.scrollTo.js"
+            ]
+            dest: "<%= config.tmp %>/scripts/"
+          }
+          {
+            expand: true
+            cwd: "./bower_components/jquery.easing/js/"
+            src: [
+              "jquery.easing.js"
             ]
             dest: "<%= config.tmp %>/scripts/"
           }
@@ -507,9 +549,9 @@ module.exports = (grunt) ->
           pretty: true
         files: [
           expand: true
-          cwd: "<%= config.app %>"
-          dest: "<%= config.tmp %>"
+          cwd: "<%= config.app %>/views/"
           src: "index.jade"
+          dest: "<%= config.tmp %>"
           ext: ".html"
         ]
 
@@ -518,18 +560,50 @@ module.exports = (grunt) ->
     if target is "dist"
       return grunt.task.run([
         "build"
-        "connect:dist:keepalive"
+
+        # "clean:dist"
+        # "jade:dist"
+        # "coffee:dist"
+        # "sass:dist"
+        # "copy:fonts"
+        # "copy:images"
+        # "copy:vendor"
+        # "htmlmin:dist"
+        # "autoprefixer:dist"
+        # "concat:dist" # This only does JS because only one CSS file, application.css, exists
+        # "cssmin:dist"
+        # "uglify:dist"
+        # "copy:dist"
+
+        # "connect:dist:keepalive"
+        "connect:livereload"
+        # "connect:dist"
+        "watch"
       ])
-    grunt.task.run [
-      "clean:server"
-      "jade"
-      "wiredep"
-      "copy:fonts"
-      "concurrent:server"
-      "autoprefixer"
-      "connect:livereload"
-      "watch"
-    ]
+    # grunt.task.run [
+      # "clean:server"
+      # "jade"
+      # "wiredep"
+      # "copy:fonts"
+      # "concurrent:server"
+      # "autoprefixer"
+
+      # "clean:dist"
+      # "jade:dist"
+      # "coffee:dist"
+      # "sass:dist"
+      # "copy:fonts"
+      # "copy:images"
+      # "copy:vendor"
+      # "htmlmin:dist"
+      # "autoprefixer:dist"
+      # "concat:dist" # This only does JS because only one CSS file, application.css, exists
+      # "cssmin:dist"
+      # "uglify:dist"
+      # "copy:dist"
+      # "connect:livereload"
+      # "watch"
+    # ]
     return
 
   grunt.registerTask "server", (target) ->
@@ -579,6 +653,7 @@ module.exports = (grunt) ->
     "concat:dist" # This only does JS because only one CSS file, application.css, exists
     "cssmin:dist"
     "uglify:dist"
+    # "rev:tmp"
     "copy:dist"
     "copy:githubpages"
     # "wiredep"
