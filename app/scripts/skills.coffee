@@ -141,6 +141,22 @@ class Skill
       ]
     }
     {
+      name: "Gulp"
+      order: 13
+      borderColor: "#ee4846"
+      textColor: "#fff"
+      icon: "gulp.png"
+      proficiency: 100
+      visible: true
+      tags: [
+        "automation"
+        "javascript"
+        "development"
+        "backend"
+        "frontend"
+      ]
+    }
+    {
       name: "CodeIgniter"
       order: 15
       borderColor: "#ff4400"

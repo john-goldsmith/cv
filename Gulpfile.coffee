@@ -118,7 +118,7 @@ gulp.task "misc", ->
 # Copy contents of dist to root for GitHub Pages
 gulp.task "ghpages", ->
   gulp.src "dist/**/*"
-    .pipe gulp.dest "."
+    .pipe gulp.dest "./"
 
 # Delete the dist directory
 gulp.task "clean", ->

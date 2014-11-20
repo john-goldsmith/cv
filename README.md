@@ -13,13 +13,16 @@ To obtain a position in which my unique ability to both develop and design web a
 - CSS3
 - Bower
 - Grunt
+- Gulp
 - CodeIgniter
 - jQuery
 - Photoshop
 - Illustrator
-- AngularJS
+- Angular
+- Ember
+- Backbone
 - Git
-- NodeJS
+- Node
 - Drupal
 - Sinatra
 - WordPress
@@ -95,15 +98,11 @@ BFA in Animation, Minor in Studio Arts
 ---
 
 ## Running locally
-- Run `grunt serve:dist`
-- The above command should automatically launch a new browser tab, but in the event that it doesn't, go to [http://0.0.0.0:9000/](http://0.0.0.0:9000/) in your browser of choice (the host and port are configured in `Gruntfile`, under `connect.options.host` and `connect.options.port`, respectively)
+- Run `gulp serve`
+- Go to [http://0.0.0.0:8080/](http://0.0.0.0:9000/)
 
 ## Deplying to GitHub Pages
 - Ensure that `gh-pages` is the current branch
-- Run `grunt build:dist`
+- Run `gulp build`
 - `commit` and `push` any changes
-- Go to [http://marlorn.github.io/cv/](http://marlorn.github.io/cv/) in your browser of choice
-
-## To-do
-- Cleanup `serve` command as to avoid specifying the `dist` target (it's basically just an alias of `grunt build:dist` currently)
-- General Gruntfile cleanup and documentation
+- Go to [http://john-goldsmith.github.io/cv/](http://john-goldsmith.github.io/cv/)
