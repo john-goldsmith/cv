@@ -42,6 +42,8 @@ notify = require "gulp-notify"
 # es = require "event-stream"
 streamqueue = require "streamqueue"
 order = require "gulp-order"
+connect = require "gulp-connect"
+watch = require "gulp-watch"
 
 config =
   paths:
@@ -55,12 +57,12 @@ config =
       "bower_components/jquery/dist/jquery.js"
       "bower_components/underscore/underscore.js"
       "bower_components/modernizr/modernizr.js"
+      "bower_components/jquery.easing/js/jquery.easing.js"
+      "bower_components/jquery.scrollTo/jquery.scrollTo.js"
       "bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition.js"
       "bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/dropdown.js"
       "bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/scrollspy.js"
       "bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/collapse.js"
-      "bower_components/jquery.easing/jquery.easing.js"
-      "bower_components/jquery.scrollTo/jquery.scrollTo.js"
     ]
     styles: "app/styles/application.sass" # Assumption that application.sass includes all other required partials
     views: "app/views/index.jade" # Assumption that index.jade includes all other required partials
@@ -85,7 +87,7 @@ gulp.task "scripts", ->
   , gulp.src(config.paths.scripts), gulp.src(config.paths.coffee).pipe(coffee())
   )
   .pipe concat "application.js"
-  .pipe uglify()
+  # .pipe uglify()
   .pipe rename suffix: ".min"
   .pipe gulp.dest "dist/scripts"
 
@@ -132,5 +134,30 @@ gulp.task "clean", ->
   del "./browserconfig.xml"
   del "./robots.txt"
 
+# Reload on file changes
+gulp.task "livereload", ->
+  gulp.src "dist/**/*.{css,js,html}"
+    .pipe watch("dist/**/*.{css,js,html}")
+    .pipe connect.reload()
+
 # Default task
-gulp.task "default", ["clean", "views", "scripts", "styles", "images", "fonts", "misc", "ghpages"], ->
+gulp.task "default", ->
+  console.log "Default task not configured."
+
+# Build task
+gulp.task "build", ["clean", "views", "scripts", "styles", "images", "fonts", "misc", "ghpages"], ->
+
+# Local development server
+gulp.task "webserver", ->
+  connect.server
+    livereload: true
+    root: "dist"
+
+# Watch for file changes
+gulp.task "watch", ->
+  gulp.watch config.paths.coffee, ["scripts"]
+  gulp.watch "app/styles/**/*.{sass,scss}", ["styles"]
+  gulp.watch "app/views/**/*.jade", ["views"]
+
+# Start a local live-reload development server
+gulp.task "server", ["build", "webserver", "livereload", "watch"], ->

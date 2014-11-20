@@ -4,10 +4,10 @@
   background-color: $purple
 
   #skill-filter
-    width: 100%
+    // width: 100%
 
     .dropdown-toggle
-      width: 100%
+      width: 200px
 
     .dropdown-menu
       margin-top: 0
@@ -23,32 +23,33 @@
       .dropdown-toggle
         border-bottom-left-radius: 0
         border-bottom-right-radius: 0
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175)
-        background-image: linear-gradient(#fff, #f0f0f0)
-        background-color: $white
-        color: #333
-        border: 1px solid rgba(0, 0, 0, .2)
-        border-bottom: none
-        text-shadow: -1px -1px 0 $white
+        // box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175)
+        // background-image: linear-gradient(#fff, #f0f0f0)
+        // background-color: $white
+        // color: $white
+        // border: 1px solid rgba(0, 0, 0, .2)
+        // border-bottom: none
+        // text-shadow: -1px -1px 0 $white
 
       .dropdown-menu
-        background-color: #eee
-        border-color: #aaa
-        border-top: none
+        background-color: $magenta-highlight
+        border: none
 
         li
 
           a
+            color: $white
+            text-shadow: none
 
             &:hover
               padding-left: 15px
               padding-right: 15px
               border-radius: $border-radius
               margin: 0 5px
-              background-color: rgba(0, 0, 0, 0.1)
+              background-color: rgba(255, 255, 255, 0.1)
 
           &.divider
-            background-color: #d9d9d9
+            background-color: rgba(255, 255, 255, 0.1)
             // border-bottom: 1px solid #fff
             // height: 2px
 
