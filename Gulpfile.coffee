@@ -25,6 +25,9 @@
 #
 # [X] Copy dist to root for GitHub pages
 
+dotenv = require "dotenv"
+dotenv.load()
+
 gulp = require "gulp"
 coffee = require "gulp-coffee"
 uglify = require "gulp-uglify"
@@ -44,6 +47,8 @@ streamqueue = require "streamqueue"
 order = require "gulp-order"
 connect = require "gulp-connect"
 watch = require "gulp-watch"
+ftp = require "gulp-ftp"
+filelog = require "gulp-filelog"
 
 config =
   paths:
@@ -161,3 +166,20 @@ gulp.task "watch", ->
 
 # Start a local live-reload development server
 gulp.task "server", ["build", "webserver", "livereload", "watch"], ->
+
+# FTP files
+gulp.task "ftp", ->
+  gulp.src "dist/**/*"
+    .pipe filelog()
+    .pipe ftp
+      host: process.env.FTP_HOST
+      user: process.env.FTP_USERNAME
+      pass: process.env.FTP_PASSWORD
+      remotePath: process.env.FTP_REMOTE_PATH
+    .pipe notify
+      message: "FTP upload complete"
+      onLast: true
+
+gulp.task "repocopy", ->
+  gulp.src "dist/**/*"
+    .pipe gulp.dest "../john-goldsmith.github.io"

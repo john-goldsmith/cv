@@ -101,6 +101,8 @@ BFA in Animation, Minor in Studio Arts
 - Run `gulp serve`
 - Go to [http://0.0.0.0:8080/](http://0.0.0.0:9000/)
 
+> Note on FTP: If using the `gulp ftp` task, you must first create a `.env` file in the root that has `FTP_HOST`, `FTP_USERNAME`, `FTP_PASSWORD`, and `FTP_REMOTE_PATH` variables
+
 ## Deplying to GitHub Pages
 - Ensure that `gh-pages` is the current branch
 - Run `gulp build`
